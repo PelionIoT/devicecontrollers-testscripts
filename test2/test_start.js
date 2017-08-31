@@ -174,7 +174,7 @@ describe('WigWag DeviceController Tests:', function(){
 					it('#getting value compleated',function(done){
 						rl.question('which resource you want to get? ', (answer) => {
 						  	console.log(`you want to get: ${answer}`)
-						  	dev$.selectByID(answer).get('power')
+						  	JSON.stringify(dev$.selectByID(answer).get('power'))
 						  	done();
 						})
 					})	
