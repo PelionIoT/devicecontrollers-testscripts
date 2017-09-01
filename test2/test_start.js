@@ -182,17 +182,9 @@ describe('WigWag DeviceController Tests:', function(){
 				done();
 			}
 			else {
-			    describe('#resistoring devices',function(){
-					it('devices registor succsesfully',function(done){
-						dev$.selectByID('VirtualDeviceDriver').call('register').then(function(resp) { 
-							if(resp.VirtualDeviceDriver && resp.VirtualDeviceDriver.response && resp.VirtualDeviceDriver.response.result) { 
-								console.log(resp.VirtualDeviceDriver.response.result) 
-								done()
-							}
-							 else {
-							  console.log('Failed: ', resp.VirtualDeviceDriver.response.error) 
-							}
-						})
+			    describe('#you select wrong option',function(){
+					it('kindaly check',function(done){
+						console.log('try again!')
 					})	
 				})
 				done();
