@@ -183,8 +183,9 @@ describe('WigWag DeviceController Tests:', function(){
 			}
 			else {
 			    describe('#you select wrong option',function(){
-					it('kindaly check',function(done){
+					it('kindaly check README',function(done){
 						console.log('try again!')
+						done();
 					})	
 				})
 				done();
