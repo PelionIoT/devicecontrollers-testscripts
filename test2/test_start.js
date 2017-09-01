@@ -174,7 +174,7 @@ describe('WigWag DeviceController Tests:', function(){
 					it('#getting value compleated',function(done){
 						rl.question('which resource you want to get? ', (answer) => {
 						  	console.log(`you want to get: ${answer}`)
-						  	JSON.stringify(dev$.selectByID(answer).get('power'))
+						  	dev$.selectByID(answer).get('power')
 						  	done();
 						})
 					})	
@@ -184,15 +184,7 @@ describe('WigWag DeviceController Tests:', function(){
 			else {
 			    describe('#resistoring devices',function(){
 					it('devices registor succsesfully',function(done){
-						dev$.selectByID('VirtualDeviceDriver').call('register').then(function(resp) { 
-							if(resp.VirtualDeviceDriver && resp.VirtualDeviceDriver.response && resp.VirtualDeviceDriver.response.result) { 
-								console.log(resp.VirtualDeviceDriver.response.result) 
-								done()
-							}
-							 else {
-							  console.log('Failed: ', resp.VirtualDeviceDriver.response.error) 
-							}
-						})
+						console.log('you choose worng option')
 					})	
 				})
 				done();
