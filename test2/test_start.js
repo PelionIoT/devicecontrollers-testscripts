@@ -157,12 +157,18 @@ describe('WigWag DeviceController Tests:', function(){
 			}
 			else if(answer == '7'){
 			    describe('#set value',function(){
-			  	this .timeout(60000)
+			  	this.timeout(60000)
 					it('#set of value compleated',function(done){
 						rl.question('which resource you want to set? ', (answer) => {
 						  	console.log(`you want to set : ${answer}`)
-						  	dev$.selectByID(answer).set('power', 'on')
-						  	done();
+						  	rl.question('what state you want to set for the device? ', (state) => {
+						  		console.log(`you want to set : ${state}`)
+						  		rl.question('what pattern you want to set for the device? ', (pattern) => {
+						  			console.log(`you want to set : ${pattern}`)
+						  			dev$.selectByID(answer).set(state, pattern)
+						  			done();
+						  		})
+						  	})
 						})
 					})	
 				})
@@ -170,7 +176,7 @@ describe('WigWag DeviceController Tests:', function(){
 			}
 			else if(answer == '8'){
 			    describe('#get value',function(){
-			  	this .timeout(60000)
+			  	this.timeout(60000)
 					it('#getting value compleated',function(done){
 						rl.question('which resource you want to get? ', (answer) => {
 						  	console.log(`you want to get: ${answer}`)
