@@ -1,22 +1,19 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Mocha Tests</title>
-    <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
+  <meta charset="utf-8">
+  <title>Cow tests</title>
+  <link rel="stylesheet" media="all" href="vendor/mocha.css">
 </head>
 <body>
-    <div id="mocha"></div>
-    <script src="node_modules/mocha/mocha.js"></script>
-    <script>mocha.setup('bdd')</script>
-    <script src="devicejs run ./"></script>
-    <script>
-        mocha.checkLeaks();
-        mocha.run();
-    </script>
-<script src="startMocha.js"></script>
-    <script>
-        mocha.checkLeaks();
-        mocha.run();
-    </script>
+  <div id="mocha"><p><a href=".">Index</a></p></div>
+  <div id="messages"></div>
+  <div id="fixtures"></div>
+  <script src="vendor/mocha.js"></script>
+  <script src="vendor/chai.js"></script>
+  <script src="test1/mochatest_virtual device driver1.js"></script>
+  <script>mocha.setup('bdd')</script>
+  <script src="test2/test_start"></script>
+  <script>mocha.run();</script>
 </body>
-</html> 
+</html>

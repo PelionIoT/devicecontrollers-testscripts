@@ -4,7 +4,7 @@
  *
  * WIGWAG Inc, bhoopesh <bhoopesh@izuma.net>
  *
- * This file for the test report of the virtual fdevice driver
+ * This file for the test report of the virtual device driver
  */
 
 var assert = require('assert');
