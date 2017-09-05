@@ -157,7 +157,12 @@ describe('WigWag DeviceController Tests:', function(){
 			}
 			else if(answer == '7'){
 			    describe('#set value',function(){
-			  	this.timeout(60000)
+			    	console.log('you can set only',
+			    		"\n" ,'(1)LightBulb',
+						"\n" ,'(2)DoorLock',
+						"\n" ,'(3)FlipFlop',
+						"\n" ,'(4)Thermostate',)
+			  		this.timeout(60000)
 					it('#set of value compleated',function(done){
 						rl.question('which resource you want to set? ', (answer) => {
 						  	console.log(`you want to set : ${answer}`)
