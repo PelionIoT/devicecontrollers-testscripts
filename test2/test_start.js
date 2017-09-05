@@ -189,6 +189,7 @@ describe('WigWag DeviceController Tests:', function(){
 						  		console.log(`you want to set : ${state}`)
 						  		dev$.selectByID(answer).get(state).then(function(res){console.log(JSON.stringify(res));})
 						  		done();
+						  	})
 						})
 					})	
 				})
