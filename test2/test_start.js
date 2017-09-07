@@ -161,7 +161,7 @@ describe('WigWag DeviceController Tests:', function(){
 			    		"\n" ,'(1)LightBulb',
 						"\n" ,'(2)DoorLock',
 						"\n" ,'(3)FlipFlop',
-						"\n" ,'(4)Thermostate',)
+						"\n" ,'(4)Thermostat',)
 			  		this.timeout(60000)
 					it('#set of value compleated',function(done){
 						rl.question('which resource you want to set? ', (answer) => {
@@ -186,7 +186,7 @@ describe('WigWag DeviceController Tests:', function(){
 						rl.question('which resource you want to get? ', (answer) => {
 						  	console.log(`you want to get: ${answer}`)
 						  	rl.question('what state you want to get for the device? ', (state) => {
-						  		console.log(`you want to set : ${state}`)
+						  		console.log(`you want to set state of : ${state}`)
 						  		dev$.selectByID(answer).get(state).then(function(res){console.log(JSON.stringify(res));})
 						  		done();
 						  	})
