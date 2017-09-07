@@ -5,7 +5,7 @@ var Mocha = require('mocha'),
 // Instantiate a Mocha instance.
 var mocha = new Mocha();
 
-var testDir = './test2'
+var testDir = './test'
 
 // Add each .js file to the mocha instance
 fs.readdirSync(testDir).filter(function(file){
