@@ -13,23 +13,35 @@ describe('WigWag Inc test for automate', function(){
 	})				
 	describe('#checking all the resources',function(){
 		it('this is the automate check for the mocha',function(done){
-			dev$.selectByID('VirtualDeviceDriver').call('listResources').then(function(resp) { 
-				var len = resp.VirtualDeviceDriver.response.result.length
-				dev$.selectByID('VirtualDeviceDriver').call('listResources').then(function(resp) { 
+			dev$.select('id=*').listResources().then(function(a) { 
+				len = Object.keys(a).length
+				dev$.select('id=*').listResources().then(function(a) {
 					for(var i = 0; i < len; i++){
-						const rs = resp.VirtualDeviceDriver.response.result[i]
+						const rs = Object.keys(a)[i]
 						dev$.select('id=*').listResources().then(function(a){
 							const typ = a[rs].type
 							dev$.listResourceTypes().then(function(b) { 
 								const facades = b[typ]['0.0.1'].interfaces[0] 
 								if(facades == 'Facades/Switchable'){
-									dev$.selectByID(rs).set('power', 'on')
-									dev$.selectByID(rs).get('power').then(function(c){
-										console.log(c)
-									})
-									dev$.selectByID(rs).set('power', 'off')
-									dev$.selectByID(rs).get('power').then(function(c){
-										console.log(c)
+									dev$.selectByID(rs).set('power', 'on').then(function(resolve, reject){
+										if(resolve){
+											dev$.selectByID(rs).get('power').then(function(c){
+												console.log(c)
+											})
+											dev$.selectByID(rs).set('power', 'off').then(function(resolve, reject){
+												if(resolve){
+													dev$.selectByID(rs).get('power').then(function(c){
+														console.log(c)
+													})
+												}
+												else{
+													console.log('promise did not resolve')
+												}
+											})
+										}
+										else{
+											console.log('promise did not resolve')
+										}
 									})
 								}
 								else if(facades == 'Facades/HasBattery'){
@@ -48,24 +60,52 @@ describe('WigWag Inc test for automate', function(){
 									})
 								}
 								else if(facades == 'Facades/HasLock'){
-									dev$.selectByID(rs).set('lock', 'lock')
-									dev$.selectByID(rs).get('lock').then(function(c){
-										console.log(c)
+									dev$.selectByID(rs).set('lock', 'lock').then(function(resolve, reject){
+										if(resolve){
+											dev$.selectByID(rs).get('lock').then(function(c){
+												console.log(c)
+											})
+											dev$.selectByID(rs).set('lock', 'unlock').then(function(resolve, reject){
+												if(resolve){
+													dev$.selectByID(rs).get('lock').then(function(c){
+														console.log(c)
+													})
+												}
+												else{
+													console.log('promise not resolved')
+												}
+											})
+										}
+										else{
+											console.log('promise not resolved')
+										}
 									})
-									dev$.selectByID(rs).set('lock', 'unlock')
-									dev$.selectByID(rs).get('lock').then(function(c){
-										console.log(c)
-									})
+									
+									
+									
 								}
 								else if(facades == 'Facades/Flipflop'){
-									dev$.selectByID(rs).set('flipflop', 'on')
-									dev$.selectByID(rs).get('flipflop').then(function(c){
-										console.log(c)
+									dev$.selectByID(rs).set('flipflop', 'on').then(function(resolve, reject){
+										if(resolve){
+											dev$.selectByID(rs).get('flipflop').then(function(c){
+												console.log(c)
+											})
+											dev$.selectByID(rs).set('flipflop', 'off').then(function(resolve, reject){
+												if(resolve){
+													dev$.selectByID(rs).get('flipflop').then(function(c){
+														console.log(c)
+													})
+												}
+												else{
+													console.log('promish not resolved')
+												}
+											})
+										}
+										else{
+											console.log('promise did not resolve')
+										}	
 									})
-									dev$.selectByID(rs).set('flipflop', 'off')
-									dev$.selectByID(rs).get('flipflop').then(function(c){
-										console.log(c)
-									})
+	
 								}
 								else if(facades == 'Facades/Humidity'){
 									dev$.selectByID(rs).get('humidity').then(function(c){
@@ -98,21 +138,45 @@ describe('WigWag Inc test for automate', function(){
 									})
 								}
 								else if(facades == 'Facades/ThermostatMode'){
-									dev$.selectByID(rs).set('thermostatMode', 'heat')
-									dev$.selectByID(rs).get('thermostatMode').then(function(c){
-										console.log(c)
-									})
-									dev$.selectByID(rs).set('thermostatMode', 'cool')
-									dev$.selectByID(rs).get('thermostatMode').then(function(c){
-										console.log(c)
-									})
-									dev$.selectByID(rs).set('thermostatMode', 'off')
-									dev$.selectByID(rs).get('thermostatMode').then(function(c){
-										console.log(c)
-									})
-									dev$.selectByID(rs).set('thermostatMode', 'auto')
-									dev$.selectByID(rs).get('thermostatMode').then(function(c){
-										console.log(c)
+									dev$.selectByID(rs).set('thermostatMode', 'heat').then(function(resolve, reject){
+										if(resolve){
+											dev$.selectByID(rs).get('thermostatMode').then(function(c){
+												console.log(c)
+											})
+											dev$.selectByID(rs).set('thermostatMode', 'cool').then(function(resolve, reject){
+												if(resolve){
+													dev$.selectByID(rs).get('thermostatMode').then(function(c){
+														console.log(c)
+													})
+													dev$.selectByID(rs).set('thermostatMode', 'off').then(function(resolve, reject){
+														if(resolve){
+															dev$.selectByID(rs).get('thermostatMode').then(function(c){
+																console.log(c)
+															})
+															dev$.selectByID(rs).set('thermostatMode', 'auto').then(function(resolve, reject){
+																if(resolve){
+																	dev$.selectByID(rs).get('thermostatMode').then(function(c){
+																		console.log(c)
+																	})
+																}
+																else{
+																	console.log('promise not resolved')
+																}
+															})	
+														}
+														else{
+															console.log('promise not resolved')
+														}
+													})
+												}
+												else{
+
+												}
+											})
+										}
+										else{
+											console.log('promise not resolved')
+										}
 									})
 								}
 								else if(facades == 'Facades/HasVibration'){
