@@ -1,7 +1,14 @@
 var assert = require('assert')
 var expect = require('chai').expect;
 
-
+describe('#you have following resources with their status', function(){
+		it('you have the above resources with there status', function(done){
+			dev$.select('id=*').listResources().then(function(resp){
+				console.log(resp)
+				done();
+			})
+		})
+	})
 dev$.select('id=*').listResources().then(function(a) { 
 	len = Object.keys(a).length
 	dev$.select('id=*').listResources().then(function(a) {
@@ -12,19 +19,11 @@ dev$.select('id=*').listResources().then(function(a) {
 				dev$.listResourceTypes().then(function(b) { 
 					const facades = b[typ]['0.0.1'].interfaces[0]
 
-
-
-	describe('#you have following resources with their status', function(){
-		//it('you have the above resources with there status', function(){
-			dev$.select('id=*').listResources().then(function(resp){
-				console.log(resp)
-				
-			})
-		//})
-	})
 	if(facades == 'Facades/Switchable'){
+		console.log(facades)
 		describe('checking the LightBulb resorce',function(){
-			//it('test of LightBulb compleate',function(){
+			it('test of LightBulb compleate',function(){
+				console.log(facades)
 				dev$.selectByID(rs).set('power', 'on').then(function(resolve, reject){
 					if(resolve){
 						dev$.selectByID(rs).get('power').then(function(c){
@@ -45,7 +44,7 @@ dev$.select('id=*').listResources().then(function(a) {
 						console.log('promise did not resolve')
 					}
 				})
-			//})						
+			})						
 		})
 	}
 	else if(facades == 'Facades/HasBattery'){
