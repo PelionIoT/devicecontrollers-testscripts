@@ -22,7 +22,7 @@ dev$.select('id=*').listResources().then(function(a) {
 	if(facades == 'Facades/Switchable'){
 		console.log(facades)
 		describe('checking the LightBulb resorce',function(){
-			it('test of LightBulb compleate',function(){
+			//it('test of LightBulb compleate',function(){
 				console.log(facades)
 				dev$.selectByID(rs).set('power', 'on').then(function(resolve, reject){
 					if(resolve){
@@ -45,7 +45,7 @@ dev$.select('id=*').listResources().then(function(a) {
 					}
 				})
 			})						
-		})
+		//})
 	}
 	else if(facades == 'Facades/HasBattery'){
 		describe('checking the HasBattery resorce',function(){
