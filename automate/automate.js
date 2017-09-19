@@ -1,3 +1,11 @@
+/*
+ * mocha test for virtual device driver
+ *
+ * WIGWAG Inc, bhoopesh <bhoopesh@izuma.net>
+ *
+ * This file for the test report of the virtual fdevice driver
+ */
+
 var assert = require('assert')
 var expect = require('chai').expect;
 var select = dev$.select('id=*').listResources()
@@ -26,7 +34,7 @@ len = Object.keys(a).length
 	//console.log(facades)
 	if(facades == 'Facades/Switchable'){
 		describe('#checking the LightBulb resorce',function(){
-			console.log(facades)
+			//console.log(facades)
 			it('test of LightBulb compleate',function(done){
 
 				dev$.selectByID(rs).set('power', 'on').then(function(resolve, reject){
@@ -281,10 +289,8 @@ len = Object.keys(a).length
 				done()
 			})
 		})
-	}												
-														
-
-
+	}
+													
 		})	
 	}	
 })
