@@ -37,18 +37,12 @@ len = Object.keys(a).length
 			//console.log(facades)
 			it('test of LightBulb compleate',function(done){
 
-<<<<<<< HEAD
 				var setvalue1 = 'on'
 				dev$.selectByID(rs).set('power', setvalue1).then(function(setResp) {
-=======
-				var setvalue = 'on'
-				dev$.selectByID(rs).set('power', setvalue).then(function(setResp) {
->>>>>>> f5a30cd77f655f7cb7cede34260930ca759a398c
 					if(setResp && setResp[rs] && setResp[rs].receivedResponse && setResp[rs].response.error === null) {
 						//Successfuly set the power to 'on'
 						dev$.selectByID(rs).get('power').then(function(getResp) {
 							if(getResp && getResp[rs] && getResp[rs].response && typeof getResp[rs].response.result !== 'undefined') {
-<<<<<<< HEAD
 								if(getResp[rs].response.result == setvalue1) {
 									console.log(getResp)
 									//Previous set successfully set the power value to 'on'
@@ -73,22 +67,6 @@ len = Object.keys(a).length
 					console.log('Error!')
 					//Failed to set the power to 'on'
 					done()
-=======
-								if(getResp[rs].response.result == setvalue) {
-									//Previous set successfully set the power value to 'on'
-								}
-							} else {
-								//Failed to get response
-							}
-						}, function(err) {
-							//Failed to get response
-						});
-					} else {
-						//Failed to set the power to 'on'
-					}
-				}, function(err) {
-					//Failed to set the power to 'on'
->>>>>>> f5a30cd77f655f7cb7cede34260930ca759a398c
 				});
 
 				
