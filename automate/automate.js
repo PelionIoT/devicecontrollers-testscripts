@@ -29,29 +29,53 @@ len = Object.keys(a).length
 			console.log(facades)
 			it('test of LightBulb compleate',function(done){
 
-				dev$.selectByID(rs).set('power', 'on').then(function(resolve, reject){
-					if(resolve){
-						dev$.selectByID(rs).get('power').then(function(c){
-							console.log(c)
-						})
-						dev$.selectByID(rs).set('power', 'off').then(function(resolve, reject){
-							if(resolve){
-								dev$.selectByID(rs).get('power').then(function(c){
-									console.log(c)
-									done()
-								})
+				var setvalue = 'on'
+				dev$.selectByID(rs).set('power', setvalue).then(function(setResp) {
+					if(setResp && setResp[rs] && setResp[rs].receivedResponse && setResp[rs].response.error === null) {
+						//Successfuly set the power to 'on'
+						dev$.selectByID(rs).get('power').then(function(getResp) {
+							if(getResp && getResp[rs] && getResp[rs].response && typeof getResp[rs].response.result !== 'undefined') {
+								if(getResp[rs].response.result == setvalue) {
+									//Previous set successfully set the power value to 'on'
+								}
+							} else {
+								//Failed to get response
 							}
-							else{
-								console.log('promise did not resolve')
-								done()
-							}
-						})
+						}, function(err) {
+							//Failed to get response
+						});
+					} else {
+						//Failed to set the power to 'on'
 					}
-					else{
-						console.log('promise did not resolve')
-						done()
-					}
-				})
+				}, function(err) {
+					//Failed to set the power to 'on'
+				});
+
+				
+
+				// dev$.selectByID(rs).set('power', 'on').then(function(resolve, reject){
+				// 	if(resolve){
+				// 		dev$.selectByID(rs).get('power').then(function(c){
+				// 			console.log(c)
+				// 		})
+				// 		dev$.selectByID(rs).set('power', 'off').then(function(resolve, reject){
+				// 			if(resolve){
+				// 				dev$.selectByID(rs).get('power').then(function(c){
+				// 					console.log(c)
+				// 					done()
+				// 				})
+				// 			}
+				// 			else{
+				// 				console.log('promise did not resolve')
+				// 				done()
+				// 			}
+				// 		})
+				// 	}
+				// 	else{
+				// 		console.log('promise did not resolve')
+				// 		done()
+				// 	}
+				// })
 			})						
 		})
 	}
