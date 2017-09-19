@@ -37,29 +37,63 @@ len = Object.keys(a).length
 			//console.log(facades)
 			it('test of LightBulb compleate',function(done){
 
-				dev$.selectByID(rs).set('power', 'on').then(function(resolve, reject){
-					if(resolve){
-						dev$.selectByID(rs).get('power').then(function(c){
-							console.log(c)
-						})
-						dev$.selectByID(rs).set('power', 'off').then(function(resolve, reject){
-							if(resolve){
-								dev$.selectByID(rs).get('power').then(function(c){
-									console.log(c)
-									done()
-								})
-							}
-							else{
-								console.log('promise did not resolve')
+				var setvalue1 = 'on'
+				dev$.selectByID(rs).set('power', setvalue1).then(function(setResp) {
+					if(setResp && setResp[rs] && setResp[rs].receivedResponse && setResp[rs].response.error === null) {
+						//Successfuly set the power to 'on'
+						dev$.selectByID(rs).get('power').then(function(getResp) {
+							if(getResp && getResp[rs] && getResp[rs].response && typeof getResp[rs].response.result !== 'undefined') {
+								if(getResp[rs].response.result == setvalue1) {
+									console.log(getResp)
+									//Previous set successfully set the power value to 'on'
+									done();
+								}
+							} else {
+								console.log('something is undefined')
+								//Failed to get response
 								done()
 							}
-						})
-					}
-					else{
-						console.log('promise did not resolve')
+						}, function(err) {
+							console.log('Error!')
+							//Failed to get response
+							done()
+						});
+					} else {
+						console.log('some issue while powering on')
+						//Failed to set the power to 'on'
 						done()
 					}
-				})
+				}, function(err) {
+					console.log('Error!')
+					//Failed to set the power to 'on'
+					done()
+				});
+
+				
+
+				// dev$.selectByID(rs).set('power', 'on').then(function(resolve, reject){
+				// 	if(resolve){
+				// 		dev$.selectByID(rs).get('power').then(function(c){
+				// 			console.log(c)
+				// 		})
+				// 		dev$.selectByID(rs).set('power', 'off').then(function(resolve, reject){
+				// 			if(resolve){
+				// 				dev$.selectByID(rs).get('power').then(function(c){
+				// 					console.log(c)
+				// 					done()
+				// 				})
+				// 			}
+				// 			else{
+				// 				console.log('promise did not resolve')
+				// 				done()
+				// 			}
+				// 		})
+				// 	}
+				// 	else{
+				// 		console.log('promise did not resolve')
+				// 		done()
+				// 	}
+				// })
 			})						
 		})
 	}
