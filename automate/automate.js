@@ -35,9 +35,18 @@ len = Object.keys(a).length
 	//console.log(facades)
 	if(facades == 'Facades/Switchable'){
 		
-				setstate('power','on',rs)
+				setstate('power','on',rs).then(function() {
+					//resolve area
+				}, function(err) {
+					//reject
+				}).then(function() {
+					setstate('power','off', rs).then(function() {
+						//resolve
+					}, function(err) {
+						//reject
+					});
+				});
 
-				setstate('power','off',rs)
 
 				
 				
