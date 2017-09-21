@@ -34,15 +34,20 @@ len = Object.keys(a).length
 			
 	//console.log(facades)
 	if(facades == 'Facades/Switchable'){
-		
+		describe('#checking the LightBulb resorce',function(){
+			it('test of LightBulb compleate',function(done){
 				setstate('power','on',rs).then(function() {
+					//done();
 					//resolve area
 				}, function(err) {
+					console.log('Error!')
 					//reject
 				}).then(function() {
 					setstate('power','off', rs).then(function() {
+						done();
 						//resolve
 					}, function(err) {
+						console.log('Error!')
 						//reject
 					});
 				});
@@ -75,6 +80,8 @@ len = Object.keys(a).length
 				// 		done()
 				// 	}
 				// })
+			})
+		})
 			
 	}
 	else if(facades == 'Facades/HasBattery'){
@@ -108,9 +115,26 @@ len = Object.keys(a).length
 		})
 	}	
 	else if(facades == 'Facades/HasLock'){
-		
-				setstate('lock','lock',rs)
-				setstate('lock','unlock',rs)
+		describe('#test of DoorLock', function(){
+			it('test of DoorLock compleate',function(done){
+				setstate('lock','lock',rs).then(function() {
+					//done();
+					//resolve area
+				}, function(err) {
+					console.log('Error!')
+					//reject
+				}).then(function() {
+					setstate('lock','unlock',rs).then(function() {
+						done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					});
+				});	
+			
+				
+				
 
 				/*dev$.selectByID(rs).set('lock', 'lock').then(function(resolve, reject){
 					if(resolve){
@@ -135,13 +159,31 @@ len = Object.keys(a).length
 						done()
 					}
 				}) */
+			})
+		})
 			
 	}
 	else if(facades == 'Facades/Flipflop'){
-		
+		describe('#test of Flipflop', function(){
+			it('test of flipflop compleate',function(done){
+				setstate('flipflop','on',rs).then(function() {
+					//done();
+					//resolve area
+				}, function(err) {
+					console.log('Error!')
+					//reject
+				}).then(function() {
+					setstate('flipflop','off',rs).then(function() {
+						done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					});
+				});			
 
-				setstate('flipflop','on',rs)
-				setstate('flipflop','off',rs)
+				//setstate('flipflop','on',rs)
+				//setstate('flipflop','off',rs)
 				/*dev$.selectByID(rs).set('flipflop', 'on').then(function(resolve, reject){
 					if(resolve){
 						dev$.selectByID(rs).get('flipflop').then(function(c){
@@ -165,6 +207,8 @@ len = Object.keys(a).length
 						done()
 					}	
 				})*/
+			})
+		})
 			
 	}
 	else if(facades == 'Facades/Humidity'){
@@ -230,7 +274,39 @@ len = Object.keys(a).length
 	else if(facades == 'Facades/ThermostatMode'){
 		describe('#checking the ThermostatMode resorce',function(){
 			it('test of ThermostatMode compleate',function(done){
-				dev$.selectByID(rs).set('thermostatMode', 'heat').then(function(resolve, reject){
+				setstate('thermostatMode', 'heat',rs).then(function() {
+					//done();
+					//resolve area
+				}, function(err) {
+					console.log('Error!')
+					//reject
+				}).then(function() {
+					setstate('thermostatMode', 'cool',rs).then(function() {
+						//done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					}).then(function() {
+					setstate('thermostatMode', 'auto',rs).then(function() {
+						//done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					}).then(function() {
+					setstate('thermostatMode', 'off',rs).then(function() {
+						done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					})
+						
+				})		
+				})		
+				})			
+				/*dev$.selectByID(rs).set('thermostatMode', 'heat').then(function(resolve, reject){
 					if(resolve){
 						dev$.selectByID(rs).get('thermostatMode').then(function(c){
 							console.log(c)
@@ -274,7 +350,8 @@ len = Object.keys(a).length
 						console.log('promise not resolved')
 						done()
 					}
-				})
+				})*/
+
 			})						
 		})
 	}
