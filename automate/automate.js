@@ -10,6 +10,7 @@ var assert = require('assert')
 var expect = require('chai').expect;
 var select = dev$.select('id=*').listResources()
 var resources = dev$.listResourceTypes()
+var setstate = require('./stateproperty.js')
 
 describe('#you have following resources with their status', function(){
 	it('you have the above resources with there status', function(done){
@@ -33,43 +34,14 @@ len = Object.keys(a).length
 			
 	//console.log(facades)
 	if(facades == 'Facades/Switchable'){
-		describe('#checking the LightBulb resorce',function(){
-			//console.log(facades)
-			it('test of LightBulb compleate',function(done){
+		
+				setstate('power','on',rs)
 
-				var setvalue1 = 'on'
-				dev$.selectByID(rs).set('power', setvalue1).then(function(setResp) {
-					if(setResp && setResp[rs] && setResp[rs].receivedResponse && setResp[rs].response.error === null) {
-						//Successfuly set the power to 'on'
-						dev$.selectByID(rs).get('power').then(function(getResp) {
-							if(getResp && getResp[rs] && getResp[rs].response && typeof getResp[rs].response.result !== 'undefined') {
-								if(getResp[rs].response.result == setvalue1) {
-									console.log(getResp)
-									//Previous set successfully set the power value to 'on'
-									done();
-								}
-							} else {
-								console.log('something is undefined')
-								//Failed to get response
-								done()
-							}
-						}, function(err) {
-							console.log('Error!')
-							//Failed to get response
-							done()
-						});
-					} else {
-						console.log('some issue while powering on')
-						//Failed to set the power to 'on'
-						done()
-					}
-				}, function(err) {
-					console.log('Error!')
-					//Failed to set the power to 'on'
-					done()
-				});
+				setstate('power','off',rs)
 
 				
+				
+				//done();
 
 				// dev$.selectByID(rs).set('power', 'on').then(function(resolve, reject){
 				// 	if(resolve){
@@ -94,8 +66,7 @@ len = Object.keys(a).length
 				// 		done()
 				// 	}
 				// })
-			})						
-		})
+			
 	}
 	else if(facades == 'Facades/HasBattery'){
 		describe('#checking the HasBattery resorce',function(){
@@ -128,9 +99,11 @@ len = Object.keys(a).length
 		})
 	}	
 	else if(facades == 'Facades/HasLock'){
-		describe('#checking the DoorLock resorce',function(){
-			it('test of DoorLock compleate',function(done){
-				dev$.selectByID(rs).set('lock', 'lock').then(function(resolve, reject){
+		
+				setstate('lock','lock',rs)
+				setstate('lock','unlock',rs)
+
+				/*dev$.selectByID(rs).set('lock', 'lock').then(function(resolve, reject){
 					if(resolve){
 						dev$.selectByID(rs).get('lock').then(function(c){
 							console.log(c)
@@ -152,14 +125,15 @@ len = Object.keys(a).length
 						console.log('promise not resolved')
 						done()
 					}
-				})
-			})						
-		})
+				}) */
+			
 	}
 	else if(facades == 'Facades/Flipflop'){
-		describe('#checking the Flipflop resorce',function(){
-			it('test of flipflop compleate',function(done){
-				dev$.selectByID(rs).set('flipflop', 'on').then(function(resolve, reject){
+		
+
+				setstate('flipflop','on',rs)
+				setstate('flipflop','off',rs)
+				/*dev$.selectByID(rs).set('flipflop', 'on').then(function(resolve, reject){
 					if(resolve){
 						dev$.selectByID(rs).get('flipflop').then(function(c){
 							console.log(c)
@@ -172,7 +146,7 @@ len = Object.keys(a).length
 								})
 							}
 							else{
-								console.log('promish not resolved')
+								console.log('promise not resolved')
 								done()
 							}
 						})
@@ -181,9 +155,8 @@ len = Object.keys(a).length
 						console.log('promise did not resolve')
 						done()
 					}	
-				})
-			})						
-		})
+				})*/
+			
 	}
 	else if(facades == 'Facades/Humidity'){
 		describe('#checking the HumiditySensor resorce',function(){
