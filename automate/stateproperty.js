@@ -1,3 +1,10 @@
+/*
+ * mocha test for on board devices
+ *
+ * WIGWAG Inc, bhoopesh <bhoopesh@izuma.net>
+ *
+ * This file for the test report of the virtual fdevice driver
+ */
 
 // module.exports = function(stateproperty,setvalue,rs){
 // 	describe('function for setting the device state',function(){

@@ -1,5 +1,5 @@
 /*
- * mocha test for virtual device driver
+ * mocha test for onboard devices
  *
  * WIGWAG Inc, bhoopesh <bhoopesh@izuma.net>
  *
@@ -29,7 +29,9 @@ len = Object.keys(a).length
 		const typ = a[rs].type
 		//console.log(typ)
 		resources.then(function(b) { 
-			const facades = b[typ]['0.0.1'].interfaces[0]
+			for(var j = 0; j < 19; j++){
+			const facades = b[typ]['0.0.1'].interfaces[j]
+			
 			//console.log(facades)
 			
 	//console.log(facades)
@@ -273,7 +275,7 @@ len = Object.keys(a).length
 		})
 	}		
 	else if(facades == 'Facades/HasTemperature'){
-		describe('#test of TemperatureSensor',function(){
+		describe('#test of Temperature',function(){
 			this.timeout(60000)
 			it('TemperatureSensor tested',function(done){
 				dev$.selectByID(rs).get('temperature').then(function(c){
@@ -380,7 +382,7 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/HasWaterLeakDetector'){
-		describe('#test of WaterLeakDetector',function(){
+		describe('#test of WaterLeakDetector',function(done){
 			this.timeout(60000)
 			it('WaterLeakDetector tested',function(){
 				dev$.selectByID(rs).get('waterleak').then(function(c){
@@ -389,8 +391,272 @@ len = Object.keys(a).length
 				})
 			})					
 		})
-	}	
-	else{
+	}
+	else if(facades == 'Facades/OccupiedCoolTemperatureLevel'){
+		describe('#test of OccupiedCoolTemperatureLevel for thermostat',function(){
+			this.timeout(60000)
+			it('OccupiedCoolTemperatureLevel for thermostat tested',function(done){
+				dev$.selectByID(rs).get('occupiedCoolTemperatureLevel').then(function(c){
+					console.log(c)
+					done()
+				})
+			})					
+		})
+	}
+	else if(facades == 'Facades/OccupiedHeatTemperatureLevel'){
+		describe('#test of occupiedHeatTemperatureLevel for thermostat',function(){
+			this.timeout(60000)
+			it('occupiedHeatTemperatureLevel tested for thermostat',function(done){
+				dev$.selectByID(rs).get('occupiedHeatTemperatureLevel').then(function(c){
+					console.log(c)
+					done()
+				})
+			})					
+		})
+	}
+	else if(facades == 'Facades/OccupiedAutoTemperatureLevel'){
+		describe('#test of occupiedAutoTemperatureLevel for thermostat',function(){
+			this.timeout(60000)
+			it('occupiedAutoTemperatureLevel tested for thermostat',function(done){
+				dev$.selectByID(rs).get('occupiedAutoTemperatureLevel').then(function(c){
+					console.log(c)
+					done()
+				})
+			})					
+		})
+	}
+	else if(facades == 'Facades/UnoccupiedCoolTemperatureLevel'){
+		describe('#test of unoccupiedCoolTemperatureLevel for thermostat',function(){
+			this.timeout(60000)
+			it('unoccupiedCoolTemperatureLevel tested for thermostat',function(done){
+				dev$.selectByID(rs).get('unoccupiedCoolTemperatureLevel').then(function(c){
+					console.log(c)
+					done()
+				})
+			})					
+		})
+	}
+	else if(facades == 'Facades/UnoccupiedHeatTemperatureLevel'){
+		describe('#test of unoccupiedHeatTemperatureLevel for thermostat',function(){
+			this.timeout(60000)
+			it('unoccupiedHeatTemperatureLevel tested for thermostat',function(done){
+				dev$.selectByID(rs).get('unoccupiedHeatTemperatureLevel').then(function(c){
+					console.log(c)
+					done()
+				})
+			})					
+		})
+	}
+	else if(facades == 'Facades/UnoccupiedAutoTemperatureLevel'){
+		describe('#test of unoccupiedAutoTemperatureLevel for thermostat',function(){
+			this.timeout(60000)
+			it('test of unoccupiedAutoTemperatureLevel for thermostat',function(done){
+				dev$.selectByID(rs).get('unoccupiedAutoTemperatureLevel').then(function(c){
+					console.log(c)
+					done()
+				})
+			})					
+		})
+	}
+	else if(facades == 'Facades/ThermostatReturnTemperature'){
+		describe('#test of returnTemperature for thermostat',function(){
+			this.timeout(60000)
+			it('test of returnTemperature for thermostat',function(done){
+				dev$.selectByID(rs).get('returnTemperature').then(function(c){
+					console.log(c)
+					done()
+				})
+			})					
+		})
+	}
+	else if(facades == 'Facades/ThermostatSupplyTemperature'){
+		describe('#test of supplyTemperature for thermostat',function(){
+			this.timeout(60000)
+			it('test of supplyTemperature for thermostat',function(done){
+				dev$.selectByID(rs).get('supplyTemperature').then(function(c){
+					console.log(c)
+					done()
+				})
+			})					
+		})
+	}
+	else if(facades == 'Facades/ThermostatDeadband'){
+		describe('#test of deadband for thermostat',function(){
+			this.timeout(60000)
+			it('test of deadband for thermostat',function(done){
+				dev$.selectByID(rs).get('deadband').then(function(c){
+					console.log(c)
+					done()
+				})
+			})					
+		})
+	}
+	else if(facades == 'Facades/ThermostatW1Status'){
+		describe('#test of w1Status for thermostat', function(){
+			this.timeout(60000)
+			it('w1Status tested for thermostat',function(done){
+				setstate('w1Status','open',rs).then(function() {
+					//done();
+					//resolve area
+				}, function(err) {
+					console.log('Error!')
+					//reject
+				}).then(function() {
+					setstate('w1Status','close',rs).then(function() {
+						done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					});
+				})
+			})
+		})
+	}
+	else if(facades == 'Facades/ThermostatW2Status'){
+		describe('#test of w2Status for thermostat', function(){
+			this.timeout(60000)
+			it('w2Status tested for thermostat',function(done){
+				setstate('w2Status','open',rs).then(function() {
+					//done();
+					//resolve area
+				}, function(err) {
+					console.log('Error!')
+					//reject
+				}).then(function() {
+					setstate('w2Status','close',rs).then(function() {
+						done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					});
+				})
+			})
+		})
+	}
+	else if(facades == 'Facades/ThermostatY1Status'){
+		describe('#test of y1Status for thermostat', function(){
+			this.timeout(60000)
+			it('y1Status tested for thermostat',function(done){
+				setstate('y1Status','open',rs).then(function() {
+					//done();
+					//resolve area
+				}, function(err) {
+					console.log('Error!')
+					//reject
+				}).then(function() {
+					setstate('y1Status','close',rs).then(function() {
+						done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					});
+				})
+			})
+		})
+	}
+	else if(facades == 'Facades/ThermostatY2Status'){
+		describe('#test of y2Status for thermostat', function(){
+			this.timeout(60000)
+			it('y2Status tested for thermostat',function(done){
+				setstate('y2Status','open',rs).then(function() {
+					//done();
+					//resolve area
+				}, function(err) {
+					console.log('Error!')
+					//reject
+				}).then(function() {
+					setstate('y2Status','close',rs).then(function() {
+						done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					});
+				})
+			})
+		})
+	}
+	else if(facades == 'Facades/ThermostatGStatus'){
+		describe('#test of gStatus for thermostat', function(){
+			this.timeout(60000)
+			it('gStatus tested for thermostat',function(done){
+				setstate('gStatus','open',rs).then(function() {
+					//done();
+					//resolve area
+				}, function(err) {
+					console.log('Error!')
+					//reject
+				}).then(function() {
+					setstate('gStatus','close',rs).then(function() {
+						done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					});
+				})
+			})
+		})
+	}
+	else if(facades == 'Facades/KeypadLockLevel'){
+		describe('#test of keypadLockLevel for thermostat',function(){
+			this.timeout(60000)
+			it('test of keypadLockLevel for thermostat',function(done){
+				dev$.selectByID(rs).get('keypadLockLevel').then(function(c){
+					console.log(c)
+					done()
+				})
+			})					
+		})
+	}
+	else if(facades == 'Facades/TemperatureDisplayMode'){
+		describe('#test of temperatureDisplayMode for thermostat', function(){
+			this.timeout(60000)
+			it('temperatureDisplayMode tested for thermostat',function(done){
+				setstate('temperatureDisplayMode','celsius',rs).then(function() {
+					//done();
+					//resolve area
+				}, function(err) {
+					console.log('Error!')
+					//reject
+				}).then(function() {
+					setstate('temperatureDisplayMode','fahrenheit',rs).then(function() {
+						done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					});
+				})
+			})
+		})
+	}
+	else if(facades == 'Facades/OccupancyMode'){
+		describe('#test of occupancyMode for thermostat', function(){
+			this.timeout(60000)
+			it('occupancyMode tested for thermostat',function(done){
+				setstate('occupancyMode','occupied',rs).then(function() {
+					//done();
+					//resolve area
+				}, function(err) {
+					console.log('Error!')
+					//reject
+				}).then(function() {
+					setstate('occupancyMode','unoccupied',rs).then(function() {
+						done();
+							//resolve
+					}, function(err) {
+						console.log('Error!')
+						//reject
+					});
+				})
+			})
+		})
+	}
+	/*else{
 		describe('#no such facade',function(){
 			this.timeout(60000)
 			it('statement when there is know such facades',function(done){
@@ -398,7 +664,8 @@ len = Object.keys(a).length
 				done()
 			})
 		})
-	}
+	}*/
+}
 													
 		})	
 	}	
