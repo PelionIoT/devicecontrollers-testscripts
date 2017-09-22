@@ -12,8 +12,8 @@ var select = dev$.select('id=*').listResources()
 var resources = dev$.listResourceTypes()
 var setstate = require('./stateproperty.js')
 
-describe('#you have following resources with their status', function(){
-	it('you have the above resources with there status', function(done){
+describe('#you have following onboard devices', function(){
+	it('list onboard devices', function(done){
 		dev$.select('id=*').listResources().then(function(resp){
 			console.log(resp)
 			done()
@@ -34,8 +34,9 @@ len = Object.keys(a).length
 			
 	//console.log(facades)
 	if(facades == 'Facades/Switchable'){
-		describe('#checking the LightBulb resorce',function(){
-			it('test of LightBulb compleate',function(done){
+		describe('#test for LightBulb',function(){
+			this.timeout(60000)
+			it('LightBulb tested',function(done){
 				setstate('power','on',rs).then(function() {
 					//done();
 					//resolve area
@@ -85,8 +86,9 @@ len = Object.keys(a).length
 			
 	}
 	else if(facades == 'Facades/HasBattery'){
-		describe('#checking the HasBattery resorce',function(){
-			it('test of Battery compleate',function(done){
+		describe('#test of battery',function(){
+			this.timeout(60000)
+			it('battery tested',function(done){
 				dev$.selectByID(rs).get('battery').then(function(c){
 					console.log(c)
 					done()
@@ -95,8 +97,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/Button'){
-		describe('#checking the Button resorce',function(){
-			it('test of button compleate',function(done){
+		describe('#test of Button',function(){
+			this.timeout(60000)
+			it('Button tested',function(done){
 				dev$.selectByID(rs).get('pressed').then(function(c){
 					console.log(c)
 					done();
@@ -105,8 +108,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/HasContact'){
-		describe('#checking the ContactSensor resorce',function(done){
-			it('test of ContactSensor compleate',function(){
+		describe('#test of ContactSensor',function(done){
+			this.timeout(60000)
+			it('ContactSensor tested',function(){
 				dev$.selectByID(rs).get('contact').then(function(c){
 					console.log(c)
 					done()
@@ -116,7 +120,8 @@ len = Object.keys(a).length
 	}	
 	else if(facades == 'Facades/HasLock'){
 		describe('#test of DoorLock', function(){
-			it('test of DoorLock compleate',function(done){
+			it('DoorLock tested',function(done){
+				this.timeout(60000)
 				setstate('lock','lock',rs).then(function() {
 					//done();
 					//resolve area
@@ -165,7 +170,8 @@ len = Object.keys(a).length
 	}
 	else if(facades == 'Facades/Flipflop'){
 		describe('#test of Flipflop', function(){
-			it('test of flipflop compleate',function(done){
+			this.timeout(60000)
+			it('Flipflop tested',function(done){
 				setstate('flipflop','on',rs).then(function() {
 					//done();
 					//resolve area
@@ -212,8 +218,9 @@ len = Object.keys(a).length
 			
 	}
 	else if(facades == 'Facades/Humidity'){
-		describe('#checking the HumiditySensor resorce',function(){
-			it('test of HumiditySensor compleate',function(done){
+		describe('#test of HumiditySensor',function(){
+			this.timeout(60000)
+			it('HumiditySensor tested',function(done){
 				dev$.selectByID(rs).get('humidity').then(function(c){
 					console.log(c)
 					done()
@@ -222,8 +229,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/HasLuminance'){
-		describe('#checking the Luminance resorce',function(){
-			it('test of Luminance compleate',function(done){
+		describe('#test of Luminance',function(){
+			this.timeout(60000)
+			it('luminance tested',function(done){
 				dev$.selectByID(rs).get('luminance').then(function(c){
 					console.log(c)
 					done()
@@ -232,8 +240,9 @@ len = Object.keys(a).length
 		})
 	}	
 	else if(facades == 'Facades/HasMotion'){
-		describe('#checking the MotionSensor resorce',function(){
-			it('test of MotionSensor compleate',function(done){
+		describe('#test of MotionSensor',function(){
+			this.timeout(60000)
+			it('MotionSensor tested',function(done){
 				dev$.selectByID(rs).get('motion').then(function(c){
 					console.log(c)
 					done()
@@ -242,8 +251,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/Regulator'){
-		describe('#checking the Regulator resorce',function(){
-			it('test of Regulator compleate',function(done){
+		describe('#test of regulator',function(){
+			this.timeout(60000)
+			it('Regulator tested',function(done){
 				dev$.selectByID(rs).get('regulator').then(function(c){
 					console.log(c)
 					done()
@@ -252,8 +262,9 @@ len = Object.keys(a).length
 		})
 	}	
 	else if(facades == 'Facades/HasSmokeAlarm'){
-		describe('#checking the SmokeAlarm resorce',function(){
-			it('test of SmokeAlarm compleate',function(done){
+		describe('#test of SmokeAlarm',function(){
+			this.timeout(60000)
+			it('SmokeAlarm tested',function(done){
 				dev$.selectByID(rs).get('smoke').then(function(c){
 					console.log(c)
 					done()
@@ -262,8 +273,9 @@ len = Object.keys(a).length
 		})
 	}		
 	else if(facades == 'Facades/HasTemperature'){
-		describe('#checking the Temperature resorce',function(){
-			it('test of Temperature compleate',function(done){
+		describe('#test of TemperatureSensor',function(){
+			this.timeout(60000)
+			it('TemperatureSensor tested',function(done){
 				dev$.selectByID(rs).get('temperature').then(function(c){
 					console.log(c)
 					done()
@@ -272,8 +284,9 @@ len = Object.keys(a).length
 		})
 	}	
 	else if(facades == 'Facades/ThermostatMode'){
-		describe('#checking the ThermostatMode resorce',function(){
-			it('test of ThermostatMode compleate',function(done){
+		describe('#test of thermostat',function(){
+			this.timeout(60000)
+			it('thermostat tested',function(done){
 				setstate('thermostatMode', 'heat',rs).then(function() {
 					//done();
 					//resolve area
@@ -282,25 +295,25 @@ len = Object.keys(a).length
 					//reject
 				}).then(function() {
 					setstate('thermostatMode', 'cool',rs).then(function() {
-						//done();
-							//resolve
-					}, function(err) {
-						console.log('Error!')
-						//reject
+							//done();
+								//resolve
+						}, function(err) {
+							console.log('Error!')
+							//reject
 					}).then(function() {
-					setstate('thermostatMode', 'auto',rs).then(function() {
-						//done();
-							//resolve
-					}, function(err) {
-						console.log('Error!')
-						//reject
+						setstate('thermostatMode', 'auto',rs).then(function() {
+							//done();
+								//resolve
+						}, function(err) {
+							console.log('Error!')
+							//reject
 					}).then(function() {
-					setstate('thermostatMode', 'off',rs).then(function() {
-						done();
-							//resolve
-					}, function(err) {
-						console.log('Error!')
-						//reject
+						setstate('thermostatMode', 'off',rs).then(function() {
+							done();
+								//resolve
+						}, function(err) {
+							console.log('Error!')
+							//reject
 					})
 						
 				})		
@@ -356,8 +369,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/HasVibration'){
-		describe('#checking the Vibration resorce',function(){
-			it('test of Vibration compleate',function(done){
+		describe('#test of VibrationSensor',function(){
+			this.timeout(60000)
+			it('VibrationSensor tested',function(done){
 				dev$.selectByID(rs).get('vibration').then(function(c){
 					console.log(c)
 					done()
@@ -366,8 +380,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/HasWaterLeakDetector'){
-		describe('#checking the WaterLeakDetector resorce',function(){
-			it('test of WaterLeakDetector compleate',function(){
+		describe('#test of WaterLeakDetector',function(){
+			this.timeout(60000)
+			it('WaterLeakDetector tested',function(){
 				dev$.selectByID(rs).get('waterleak').then(function(c){
 					console.log(c)
 					done()
@@ -377,6 +392,7 @@ len = Object.keys(a).length
 	}	
 	else{
 		describe('#no such facade',function(){
+			this.timeout(60000)
 			it('statement when there is know such facades',function(done){
 				console.log('there is no such facades')
 				done()
