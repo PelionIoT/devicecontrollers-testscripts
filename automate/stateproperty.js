@@ -1,4 +1,5 @@
 /*
+
  * mocha test for on board devices
  *
  * WIGWAG Inc, bhoopesh <bhoopesh@izuma.net>
@@ -33,8 +34,7 @@
 // 				} else {
 // 				console.log('some issue while state setting on')
 // 				done()
-// 				//Failed to set the power to 'on'
-				
+// 				//Failed to set the power to 'on'				
 // 				}
 // 				}, function(err) {
 // 				console.log('Error!')
@@ -45,6 +45,7 @@
 // 	})
 // }
 
+var expect = require('expect');
 
 module.exports = function(stateproperty,setvalue,rs){
 	// describe('function for setting the device state',function(){
@@ -60,10 +61,12 @@ module.exports = function(stateproperty,setvalue,rs){
 							resolve();
 							//Previous set successfully set the power value to 'on'
 						} else {
+							expect(getResp[rs].response.result).to.deep.Equal(setvalue);
 							reject('get not equal to set');
 						}
 					} else {
-						console.log('Failed to get response');
+						expect(getResp && getResp[rs] && getResp[rs].response && typeof getResp[rs].response.result).to.not.equal('undefined');
+						//console.log('Failed to get response');
 						reject('failed to get response');
 					}
 				}, function(err) {
@@ -71,10 +74,11 @@ module.exports = function(stateproperty,setvalue,rs){
 					reject(err);
 				});
 			} else {
-				console.log('failed to set response');
+				expect(setResp && setResp[rs] && setResp[rs].receivedResponse && setResp[rs].response.error).to.deep.Equal(null);
+				//console.log('failed to set response');
 				reject('Did not get success on set');
 			}
-		}, function(err) {
+			}, function(err) {
 			console.log('Error!')
 			reject('Failed to do set');
 		});

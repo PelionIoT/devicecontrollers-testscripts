@@ -656,15 +656,6 @@ len = Object.keys(a).length
 			})
 		})
 	}
-	/*else{
-		describe('#no such facade',function(){
-			this.timeout(60000)
-			it('statement when there is know such facades',function(done){
-				console.log('there is no such facades')
-				done()
-			})
-		})
-	}*/
 }
 													
 		})	
