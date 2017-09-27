@@ -25,20 +25,20 @@ len = Object.keys(a).length
 //console.log(len)
 	for(var i = 0; i < len; i++){
 		const rs = Object.keys(a)[i]
+		const typ = a[rs].type
 		var regis = a[rs].registered
 		var reach = a[rs].reachable
-		//console.log(reach)
-		//console.log(rs)
-		const typ = a[rs].type
-		//console.log(typ)
-		resources.then(function(b) { 
+			resources.then(function(b) { 
 			for(var j = 0; j < 19; j++){
 			const facades = b[typ]['0.0.1'].interfaces[j]
+			var regis = a[rs].registered
+			var reach = a[rs].reachable
 			
 			//console.log(facades)
 			
 	//console.log(facades)
 	if(facades == 'Facades/Switchable'){
+		//console,log(regis)
 		describe('#test for LightBulb',function(){
 			this.timeout(60000)
 			it('LightBulb tested',function(done){
@@ -47,7 +47,7 @@ len = Object.keys(a).length
 						//done();
 						//resolve area
 					}, function(err) {
-						expect(setResp && setResp[rs] && setResp[rs].receivedResponse && setResp[rs].response.error).to.deep.Equal(null);
+						expect(setResp && setResp[rs] && setResp[rs].receivedResponse && setResp[rs].response.error).to.deep.equal(null);
 						console.log('Error!')
 						//reject
 					}).then(function() {
@@ -55,20 +55,21 @@ len = Object.keys(a).length
 							done();
 							//resolve
 						}, function(err) {
-							expect(setResp && setResp[rs] && setResp[rs].receivedResponse && setResp[rs].response.error).to.deep.Equal(null);
+							expect(setResp && setResp[rs] && setResp[rs].receivedResponse && setResp[rs].response.error).to.deep.equal(null);
 							console.log('Error!')
 							//reject
 						});
 					});
 				} 
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}   
 			})
 		})
 	}
 	else if(facades == 'Facades/HasBattery'){
+		//console.log(regis)
 		describe('#test of battery',function(){
 			this.timeout(60000)
 			it('battery tested',function(done){
@@ -79,7 +80,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})						
@@ -96,7 +97,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})						
@@ -113,7 +114,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})						
@@ -141,7 +142,7 @@ len = Object.keys(a).length
 					});	
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}				
 			})
@@ -169,7 +170,7 @@ len = Object.keys(a).length
 					});		
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}			
 			})
@@ -186,7 +187,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})						
@@ -203,7 +204,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})						
@@ -220,7 +221,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})						
@@ -237,7 +238,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})						
@@ -254,7 +255,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})						
@@ -271,7 +272,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})						
@@ -316,7 +317,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 
@@ -334,7 +335,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})						
@@ -351,7 +352,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})					
@@ -368,7 +369,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})					
@@ -385,7 +386,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})					
@@ -402,7 +403,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})					
@@ -419,7 +420,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})					
@@ -436,7 +437,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})					
@@ -453,7 +454,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})					
@@ -470,7 +471,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})					
@@ -487,7 +488,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})					
@@ -504,7 +505,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})					
@@ -532,7 +533,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})
@@ -560,7 +561,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})
@@ -588,7 +589,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})
@@ -616,7 +617,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})
@@ -644,7 +645,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})
@@ -661,7 +662,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})					
@@ -689,7 +690,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})
@@ -717,7 +718,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
-					expect(regis && reach).to.deep.Equal(true);
+					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
 			})

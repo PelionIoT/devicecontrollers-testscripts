@@ -26,15 +26,15 @@ module.exports = function(stateproperty,setvalue,rs){
 						reject();
 					}
 				}, function(err) {
-					console.log('Error!')
+					//console.log('Error!')
 					reject(err);
 				});
 			} else {
 				reject();
 			}
 			}, function(err) {
-			console.log('Error!')
-			reject('Failed to do set');
+			//console.log('Error!')
+			reject(err);
 		});
 	});
 }
