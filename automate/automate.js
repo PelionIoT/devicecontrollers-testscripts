@@ -13,7 +13,7 @@ var select = dev$.select('id=*').listResources()
 var resources = dev$.listResourceTypes()
 var setstate = require('./stateproperty.js')
 
-describe('#you have following onboard devices', function(){
+describe('#you have following onboard devices'.underline.yellow, function(){
 	it('list onboard devices', function(done){
 		dev$.select('id=*').listResources().then(function(resp){
 			console.log(resp)
@@ -40,9 +40,9 @@ len = Object.keys(a).length
 	//console.log(facades)
 	if(facades == 'Facades/Switchable'){
 		//console,log(regis)
-		describe('#test for LightBulb',function(){
+		describe('#test for LightBulb'.underline.yellow,function(){
 			this.timeout(60000)
-			it('LightBulb tested',function(done){
+			it(`LightBulb for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					setstate('power','on',rs).then(function() {
 						//done();
@@ -72,9 +72,9 @@ len = Object.keys(a).length
 	}
 	else if(facades == 'Facades/HasBattery'){
 		//console.log(regis)
-		describe('#test of battery',function(){
+		describe('#test of battery'.underline.yellow,function(){
 			this.timeout(60000)
-			it('battery tested',function(done){
+			it(`battery for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('battery').then(function(c){
 						console.log(c)
@@ -90,9 +90,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/Button'){
-		describe('#test of Button',function(){
+		describe('#test of Button'.underline.yellow,function(){
 			this.timeout(60000)
-			it('Button tested',function(done){
+			it(`Button for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('pressed').then(function(c){
 						console.log(c)
@@ -108,9 +108,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/HasContact'){
-		describe('#test of ContactSensor',function(done){
+		describe('#test of ContactSensor'.underline.yellow,function(done){
 			this.timeout(60000)
-			it('ContactSensor tested',function(){
+			it(`ContactSensor for Id ${rs} tested`,function(){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('contact').then(function(c){
 						console.log(c)
@@ -126,8 +126,8 @@ len = Object.keys(a).length
 		})
 	}	
 	else if(facades == 'Facades/HasLock'){
-		describe('#test of DoorLock', function(){
-			it('DoorLock tested',function(done){
+		describe('#test of DoorLock'.underline.yellow, function(){
+			it(`DoorLock for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					this.timeout(60000)
 					setstate('lock','lock',rs).then(function() {
@@ -155,9 +155,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/Flipflop'){
-		describe('#test of Flipflop', function(){
+		describe('#test of Flipflop'.underline.yellow, function(){
 			this.timeout(60000)
-			it('Flipflop tested',function(done){
+			it(`flipflop for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					setstate('flipflop','on',rs).then(function() {
 						//done();
@@ -184,9 +184,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/Humidity'){
-		describe('#test of HumiditySensor',function(){
+		describe('#test of HumiditySensor'.underline.yellow,function(){
 			this.timeout(60000)
-			it('HumiditySensor tested',function(done){
+			it(`HumiditySensor for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('humidity').then(function(c){
 						console.log(c)
@@ -202,9 +202,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/HasLuminance'){
-		describe('#test of Luminance',function(){
+		describe('#test of Luminance'.underline.yellow,function(){
 			this.timeout(60000)
-			it('luminance tested',function(done){
+			it(`Luminance for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('luminance').then(function(c){
 						console.log(c)
@@ -220,9 +220,9 @@ len = Object.keys(a).length
 		})
 	}	
 	else if(facades == 'Facades/HasMotion'){
-		describe('#test of MotionSensor',function(){
+		describe('#test of MotionSensor'.underline.yellow,function(){
 			this.timeout(60000)
-			it('MotionSensor tested',function(done){
+			it(`MotionSensor for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('motion').then(function(c){
 						console.log(c)
@@ -238,9 +238,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/Regulator'){
-		describe('#test of regulator',function(){
+		describe('#test of regulator'.underline.yellow,function(){
 			this.timeout(60000)
-			it('Regulator tested',function(done){
+			it(`Regulator for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					console.log(`problem in the ${rs}`)
 					dev$.selectByID(rs).get('regulator').then(function(c){
@@ -257,9 +257,9 @@ len = Object.keys(a).length
 		})
 	}	
 	else if(facades == 'Facades/HasSmokeAlarm'){
-		describe('#test of SmokeAlarm',function(){
+		describe('#test of SmokeAlarm'.underline.yellow,function(){
 			this.timeout(60000)
-			it('SmokeAlarm tested',function(done){
+			it(`SmokeAlarm for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('smoke').then(function(c){
 						console.log(c)
@@ -275,9 +275,9 @@ len = Object.keys(a).length
 		})
 	}		
 	else if(facades == 'Facades/HasTemperature'){
-		describe('#test of Temperature',function(){
+		describe('#test of Temperature'.underline.yellow,function(){
 			this.timeout(60000)
-			it('TemperatureSensor tested',function(done){
+			it(`temperature for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('temperature').then(function(c){
 						console.log(c)
@@ -293,9 +293,9 @@ len = Object.keys(a).length
 		})
 	}	
 	else if(facades == 'Facades/ThermostatMode'){
-		describe('#test of thermostat',function(){
+		describe('#test of thermostat'.underline.yellow,function(){
 			this.timeout(60000)
-			it('thermostat tested',function(done){
+			it(`thermostat for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					setstate('thermostatMode', 'heat',rs).then(function() {
 						//done();
@@ -340,9 +340,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/HasVibration'){
-		describe('#test of VibrationSensor',function(){
+		describe('#test of VibrationSensor'.underline.yellow,function(){
 			this.timeout(60000)
-			it('VibrationSensor tested',function(done){
+			it(`VibrationSensor for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('vibration').then(function(c){
 						console.log(c)
@@ -358,9 +358,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/HasWaterLeakDetector'){
-		describe('#test of WaterLeakDetector',function(done){
+		describe('#test of WaterLeakDetector'.underline.yellow,function(done){
 			this.timeout(60000)
-			it('WaterLeakDetector tested',function(){
+			it(`waterleak for Id ${rs} tested`,function(){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('waterleak').then(function(c){
 						console.log(c)
@@ -376,9 +376,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/OccupiedCoolTemperatureLevel'){
-		describe('#test of OccupiedCoolTemperatureLevel for thermostat',function(){
+		describe('#test of OccupiedCoolTemperatureLevel for thermostat'.underline.yellow,function(){
 			this.timeout(60000)
-			it('OccupiedCoolTemperatureLevel for thermostat tested',function(done){
+			it(`OccupiedCoolTemperatureLevel for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('occupiedCoolTemperatureLevel').then(function(c){
 						console.log(c)
@@ -394,9 +394,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/OccupiedHeatTemperatureLevel'){
-		describe('#test of occupiedHeatTemperatureLevel for thermostat',function(){
+		describe('#test of occupiedHeatTemperatureLevel for thermostat'.underline.yellow,function(){
 			this.timeout(60000)
-			it('occupiedHeatTemperatureLevel tested for thermostat',function(done){
+			it(`OccupiedHeatTemperatureLevel for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('occupiedHeatTemperatureLevel').then(function(c){
 						console.log(c)
@@ -412,9 +412,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/OccupiedAutoTemperatureLevel'){
-		describe('#test of occupiedAutoTemperatureLevel for thermostat',function(){
+		describe('#test of occupiedAutoTemperatureLevel for thermostat'.underline.yellow,function(){
 			this.timeout(60000)
-			it('occupiedAutoTemperatureLevel tested for thermostat',function(done){
+			it(`OccupiedAutoTemperatureLevel for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('occupiedAutoTemperatureLevel').then(function(c){
 						console.log(c)
@@ -430,9 +430,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/UnoccupiedCoolTemperatureLevel'){
-		describe('#test of unoccupiedCoolTemperatureLevel for thermostat',function(){
+		describe('#test of unoccupiedCoolTemperatureLevel for thermostat'.underline.yellow,function(){
 			this.timeout(60000)
-			it('unoccupiedCoolTemperatureLevel tested for thermostat',function(done){
+			it(`unoccupiedCoolTemperatureLevel for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('unoccupiedCoolTemperatureLevel').then(function(c){
 						console.log(c)
@@ -448,9 +448,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/UnoccupiedHeatTemperatureLevel'){
-		describe('#test of unoccupiedHeatTemperatureLevel for thermostat',function(){
+		describe('#test of unoccupiedHeatTemperatureLevel for thermostat'.underline.yellow,function(){
 			this.timeout(60000)
-			it('unoccupiedHeatTemperatureLevel tested for thermostat',function(done){
+			it(`unoccupiedHeatTemperatureLevel for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('unoccupiedHeatTemperatureLevel').then(function(c){
 						console.log(c)
@@ -466,9 +466,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/UnoccupiedAutoTemperatureLevel'){
-		describe('#test of unoccupiedAutoTemperatureLevel for thermostat',function(){
+		describe('#test of unoccupiedAutoTemperatureLevel for thermostat'.underline.yellow,function(){
 			this.timeout(60000)
-			it('test of unoccupiedAutoTemperatureLevel for thermostat',function(done){
+			it(`unoccupiedAutoTemperatureLevel for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('unoccupiedAutoTemperatureLevel').then(function(c){
 						console.log(c)
@@ -484,9 +484,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/ThermostatReturnTemperature'){
-		describe('#test of returnTemperature for thermostat',function(){
+		describe('#test of returnTemperature for thermostat'.underline.yellow,function(){
 			this.timeout(60000)
-			it('test of returnTemperature for thermostat',function(done){
+			it(`returnTemperature for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('returnTemperature').then(function(c){
 						console.log(c)
@@ -502,9 +502,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/ThermostatSupplyTemperature'){
-		describe('#test of supplyTemperature for thermostat',function(){
+		describe('#test of supplyTemperature for thermostat'.underline.yellow,function(){
 			this.timeout(60000)
-			it('test of supplyTemperature for thermostat',function(done){
+			it(`ThermostatSupplyTemperature for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('supplyTemperature').then(function(c){
 						console.log(c)
@@ -520,9 +520,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/ThermostatDeadband'){
-		describe('#test of deadband for thermostat',function(){
+		describe('#test of deadband for thermostat'.underline.yellow,function(){
 			this.timeout(60000)
-			it('test of deadband for thermostat',function(done){
+			it(`deadband for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('deadband').then(function(c){
 						console.log(c)
@@ -538,9 +538,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/ThermostatW1Status'){
-		describe('#test of w1Status for thermostat', function(){
+		describe('#test of w1Status for thermostat'.underline.yellow, function(){
 			this.timeout(60000)
-			it('w1Status tested for thermostat',function(done){
+			it(`w1Status for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					setstate('w1Status','open',rs).then(function() {
 						//done();
@@ -567,9 +567,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/ThermostatW2Status'){
-		describe('#test of w2Status for thermostat', function(){
+		describe('#test of w2Status for thermostat'.underline.yellow, function(){
 			this.timeout(60000)
-			it('w2Status tested for thermostat',function(done){
+			it(`w2Status for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					setstate('w2Status','open',rs).then(function() {
 						//done();
@@ -596,9 +596,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/ThermostatY1Status'){
-		describe('#test of y1Status for thermostat', function(){
+		describe('#test of y1Status for thermostat'.underline.yellow, function(){
 			this.timeout(60000)
-			it('y1Status tested for thermostat',function(done){
+			it(`y1Status for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					setstate('y1Status','open',rs).then(function() {
 						//done();
@@ -625,9 +625,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/ThermostatY2Status'){
-		describe('#test of y2Status for thermostat', function(){
+		describe('#test of y2Status for thermostat'.underline.yellow, function(){
 			this.timeout(60000)
-			it('y2Status tested for thermostat',function(done){
+			it(`y2Status for  Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					setstate('y2Status','open',rs).then(function() {
 						//done();
@@ -654,9 +654,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/ThermostatGStatus'){
-		describe('#test of gStatus for thermostat', function(){
+		describe('#test of gStatus for thermostat'.underline.yellow, function(){
 			this.timeout(60000)
-			it('gStatus tested for thermostat',function(done){
+			it(`gStatus for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					setstate('gStatus','open',rs).then(function() {
 						//done();
@@ -683,9 +683,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/KeypadLockLevel'){
-		describe('#test of keypadLockLevel for thermostat',function(){
+		describe('#test of keypadLockLevel for thermostat'.underline.yellow,function(){
 			this.timeout(60000)
-			it('test of keypadLockLevel for thermostat',function(done){
+			it(`keypadLockLevel for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					dev$.selectByID(rs).get('keypadLockLevel').then(function(c){
 						console.log(c)
@@ -701,9 +701,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/TemperatureDisplayMode'){
-		describe('#test of temperatureDisplayMode for thermostat', function(){
+		describe('#test of temperatureDisplayMode for thermostat'.underline.yellow, function(){
 			this.timeout(60000)
-			it('temperatureDisplayMode tested for thermostat',function(done){
+			it(`temperatureDisplayMode for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					setstate('temperatureDisplayMode','celsius',rs).then(function() {
 						//done();
@@ -730,9 +730,9 @@ len = Object.keys(a).length
 		})
 	}
 	else if(facades == 'Facades/OccupancyMode'){
-		describe('#test of occupancyMode for thermostat', function(){
+		describe('#test of occupancyMode for thermostat'.underline.yellow, function(){
 			this.timeout(60000)
-			it('occupancyMode tested for thermostat',function(done){
+			it(`occupancyMode for Id ${rs} tested`,function(done){
 				if(regis && reach === true){
 					setstate('occupancyMode','occupied',rs).then(function() {
 						//done();
