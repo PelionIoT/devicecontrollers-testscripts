@@ -62,6 +62,7 @@ len = Object.keys(a).length
 					});
 				} 
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}   
@@ -80,6 +81,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -97,6 +99,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -114,6 +117,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -142,6 +146,7 @@ len = Object.keys(a).length
 					});	
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}				
@@ -170,6 +175,7 @@ len = Object.keys(a).length
 					});		
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}			
@@ -187,6 +193,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -204,6 +211,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -221,6 +229,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -232,12 +241,14 @@ len = Object.keys(a).length
 			this.timeout(60000)
 			it('Regulator tested',function(done){
 				if(regis && reach === true){
+					console.log(`problem in the ${rs}`)
 					dev$.selectByID(rs).get('regulator').then(function(c){
 						console.log(c)
 						done()
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -255,6 +266,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -272,6 +284,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -317,6 +330,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -335,6 +349,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -352,6 +367,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -369,6 +385,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -386,6 +403,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -403,6 +421,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -420,6 +439,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -437,6 +457,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -454,6 +475,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -471,6 +493,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -488,6 +511,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -505,6 +529,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -533,6 +558,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -561,6 +587,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -589,6 +616,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -617,6 +645,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -645,6 +674,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -662,6 +692,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -690,6 +721,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
@@ -718,6 +750,7 @@ len = Object.keys(a).length
 					})
 				}
 				else{
+					console.log(`problem in the ${rs}`)
 					expect(regis && reach).to.deep.equal(true);
 					done();
 				}
