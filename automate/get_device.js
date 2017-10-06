@@ -23,7 +23,8 @@ module.exports = function(stateproperty,Resources,facades){
 				resolve()
 			}
 			else{
-
+				console.log(`something is undefined hear for ${rs}`.red)
+				expect(getResp && getResp[Resources] && getResp[Resources].response && typeof getResp[Resources].response.result).not.to.equal('undefined')
 			}
 		}),function(err){
 			
