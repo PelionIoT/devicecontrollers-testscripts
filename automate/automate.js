@@ -9,20 +9,20 @@
 var assert = require('assert')
 var colors = require('colors');
 var expect = require('chai').expect;
-var select = dev$.select('id=*').listResources()
+//var select = dev$.select('id=*').listResources()
 var resources = dev$.listResourceTypes()
 var setstate = require('./stateproperty.js')
 var getstate = require('./get_device.js')
 
 describe('#you have following onboard devices'.yellow, function(){
 	it('list onboard devices compleate', function(done){
-		select.then(function(Resp){
-			console.log(Object.keys(Resp))
+		dev$.select('id=*').listResources().then(function(Resp){
+			console.log(Resp)
 			done()
 		})
 	})
 })
-select.then(function(a){
+dev$.select('id=*').listResources().then(function(a){
 len = Object.keys(a).length
 	for(var i = 0; i < len; i++){
 		const Resources = Object.keys(a)[i]
@@ -34,6 +34,7 @@ len = Object.keys(a).length
 			const facades = b[resourcesTyp]['0.0.1'].interfaces[j]
 			var regis = a[Resources].registered
 			var reach = a[Resources].reachable
+			console.log(facades)
 	if(facades == 'Facades/Switchable'){
 		describe(`#testing ${Resources}...`.yellow,function(){
 			this.timeout(60000)
@@ -44,29 +45,29 @@ len = Object.keys(a).length
 						'\ttesting facades:'.green,facades)
 					setstate('power','on',Resources,facades).then(function() {
 					}, function(err) {
-						expect(setResp && setResp[Resources] && setResp[Resources].receivedResponse && setResp[Resources].response.error).to.deep.equal(null);
-						console.log('Error!')
-						//reject
+						it(`${Resources} test fail`,function(done){
+							console.log(`problem in the ${Resources}`)
+							done(new Error("promise is not resolve"));
+						})
 					}).then(function() {
 						setstate('power','off', Resources,facades).then(function() {
 							console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 							done();
 							//resolve
 						}, function(err) {
-							expect(setResp && setResp[Resources] && setResp[Resources].receivedResponse && setResp[Resources].response.error).to.deep.equal(null);
-							console.log('Error!')
-							//reject
+							it(`${Resources} test fail`,function(done){
+								console.log(`problem in the ${Resources}`)
+								done(new Error("promise is not resolved"));
+							})
 						});
 					});
 					})
 				} 
 				else{
 					it(`${Resources} test fail`,function(done){
-					console.log(`problem in the ${Resources}`)
-					//this.skip()
-					//expect(regis && reach).to.deep.equal(true);
-					done(new Error("either device is not registered or reachable or both"));
-				})
+						console.log(`problem in the ${Resources}`)
+						done(new Error("either device is not registered or reachable or both"));
+					})
 				}   
 			})
 		
@@ -88,11 +89,9 @@ len = Object.keys(a).length
 				}
 				else{
 					it(`${Resources} test fail`,function(done){
-					console.log(`problem in the ${Resources}`)
-					//this.skip()
-					//expect(regis && reach).to.deep.equal(true);
-					done(new Error("either device is not registered or reachable or both"));
-				})
+						console.log(`problem in the ${Resources}`)
+						done(new Error("either device is not registered or reachable or both"));
+					})
 				}   
 			})						
 		
@@ -113,8 +112,6 @@ len = Object.keys(a).length
 			else{
 				it(`${Resources} test fail`,function(done){
 					console.log(`problem in the ${Resources}`)
-					//this.skip()
-					//expect(regis && reach).to.deep.equal(true);
 					done(new Error("either device is not registered or reachable or both"));
 				})
 			}   
@@ -138,8 +135,6 @@ len = Object.keys(a).length
 			else{
 				it(`${Resources} test fail`,function(done){
 					console.log(`problem in the ${Resources}`)
-					//this.skip()
-					//expect(regis && reach).to.deep.equal(true);
 					done(new Error("either device is not registered or reachable or both"));
 				})
 			}  
@@ -163,6 +158,7 @@ len = Object.keys(a).length
 						//reject
 					}).then(function() {
 						setstate('lock','unlock',Resources,facades).then(function() {
+							console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 							done();
 								//resolve
 						}, function(err) {
@@ -199,6 +195,7 @@ len = Object.keys(a).length
 						//reject
 					}).then(function() {
 						setstate('flipflop','off',Resources,facades).then(function() {
+							console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 							done();
 								//resolve
 						}, function(err) {
@@ -398,6 +395,7 @@ len = Object.keys(a).length
 								//reject
 						}).then(function() {
 							setstate('thermostatMode', 'off',Resources,facades).then(function() {
+								console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 								done();
 									//resolve
 							}, function(err) {
@@ -708,6 +706,7 @@ len = Object.keys(a).length
 						//reject
 					}).then(function() {
 						setstate('w1Status','close',Resources,facades).then(function() {
+							console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 							done();
 								//resolve
 						}, function(err) {
@@ -744,6 +743,7 @@ len = Object.keys(a).length
 						//reject
 					}).then(function() {
 						setstate('w2Status','close',Resources,facades).then(function() {
+							console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 							done();
 								//resolve
 						}, function(err) {
@@ -779,6 +779,7 @@ len = Object.keys(a).length
 						//reject
 					}).then(function() {
 						setstate('y1Status','close',Resources,facades).then(function() {
+							console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 							done();
 								//resolve
 						}, function(err) {
@@ -815,6 +816,7 @@ len = Object.keys(a).length
 						//reject
 					}).then(function() {
 						setstate('y2Status','close',Resources,facades).then(function() {
+							console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 							done();
 								//resolve
 						}, function(err) {
@@ -851,6 +853,7 @@ len = Object.keys(a).length
 						//reject
 					}).then(function() {
 						setstate('gStatus','close',Resources,facades).then(function() {
+							console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 							done();
 								//resolve
 						}, function(err) {
@@ -892,8 +895,6 @@ len = Object.keys(a).length
 					done(new Error("either device is not registered or reachable or both"));
 				})
 			} 
-			
-								
 		})
 	}
 	else if(facades == 'Facades/TemperatureDisplayMode'){
@@ -912,6 +913,7 @@ len = Object.keys(a).length
 						//reject
 					}).then(function() {
 						setstate('temperatureDisplayMode','fahrenheit',Resources,facades).then(function() {
+							console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 							done();
 								//resolve
 						}, function(err) {
@@ -948,6 +950,7 @@ len = Object.keys(a).length
 						//reject
 					}).then(function() {
 						setstate('occupancyMode','unoccupied',Resources,facades).then(function() {
+							console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 							done();
 								//resolve
 						}, function(err) {

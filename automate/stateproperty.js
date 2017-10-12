@@ -22,7 +22,7 @@ module.exports = function(stateproperty,setvalue,Resources,facades){
 						'\t\t\tgetstate:'.green,stateproperty ,'\n',
 						'\t\t\tReceive responce:'.green,getResp[Resources].receivedResponse ,'\n',
 						'\t\t\tResponce result:'.green,getResp[Resources].response.result ,'\n',
-						'\t\t\tError:'.green,getResp[Resources].response.error , )
+						'\t\t\tError:'.green,getResp[Resources].response.error)
 				//console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
 							resolve();
 							//Previous set successfully set the power value to 'on'
