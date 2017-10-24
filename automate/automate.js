@@ -7,9 +7,9 @@
  */
 
 var assert = require('assert')
-var colors = require('colors');
-var expect = require('chai').expect;
-//var select = dev$.select('id=*').listResources()
+var colors = require('colors')
+var expect = require('chai').expect
+var select = dev$.select('id=*').listResources()
 var resources = dev$.listResourceTypes()
 var setstate = require('./stateproperty.js')
 var getstate = require('./get_device.js')
@@ -17,24 +17,25 @@ var getstate = require('./get_device.js')
 describe('#you have following onboard devices'.yellow, function(){
 	it('list onboard devices compleate', function(done){
 		dev$.select('id=*').listResources().then(function(Resp){
-			console.log(Resp)
+			console.log(Object.keys(Resp))
 			done()
+			//console.log('<------------------------------------------------------------------------->'.rainbow)
 		})
 	})
 })
-dev$.select('id=*').listResources().then(function(a){
-len = Object.keys(a).length
+select.then(function(a){
+	len = Object.keys(a).length
 	for(var i = 0; i < len; i++){
 		const Resources = Object.keys(a)[i]
 		const resourcesTyp = a[Resources].type
-		var regis = a[Resources].registered
-		var reach = a[Resources].reachable
+		//var regis = a[Resources].registered
+		//var reach = a[Resources].reachable
 			resources.then(function(b) { 
 			for(var j = 0; j < 19; j++){
 			const facades = b[resourcesTyp]['0.0.1'].interfaces[j]
 			var regis = a[Resources].registered
 			var reach = a[Resources].reachable
-			console.log(facades)
+			//console.log(facades)
 	if(facades == 'Facades/Switchable'){
 		describe(`#testing ${Resources}...`.yellow,function(){
 			this.timeout(60000)
@@ -123,9 +124,10 @@ len = Object.keys(a).length
 		describe(`#testing ${Resources}...`.yellow,function(done){
 			this.timeout(60000)
 			if(regis && reach === true){
-				it(`${Resources} test complete`,function(){
+				it(`${Resources} test complete`,function(done){
 					getstate('contact',Resources,facades).then(function(){
 						done()
+						//console.log('----------------------------------------------------------------')
 					},function(err){
 						reject()
 						done()
@@ -273,6 +275,7 @@ len = Object.keys(a).length
 				it(`${Resources} test complete`,function(done){
 					getstate('motion',Resources,facades).then(function(){
 						done()
+						//console.log('-----------------------------------------------------------------')
 					},function(err){
 						reject()
 						done()
