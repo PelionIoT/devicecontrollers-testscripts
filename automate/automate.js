@@ -11,3 +11,6 @@ describe('#you have following onboard devices'.yellow, function(){
 		})
 	})
 })
+dev$.select('id=*').listResources().then(function(a){
+	console.log(Object.keys(a).length)
+})
