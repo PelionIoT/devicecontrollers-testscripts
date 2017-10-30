@@ -6,11 +6,9 @@ describe('#you have following onboard devices'.yellow, function(){
 	it('list onboard devices compleate', function(done){
 		dev$.select('id=*').listResources().then(function(Resp){
 			console.log(Object.keys(Resp))
+			console.log(Object.keys(Resp).length)
 			done()
 			//console.log('<------------------------------------------------------------------------->'.rainbow)
 		})
 	})
-})
-dev$.select('id=*').listResources().then(function(a){
-	console.log(Object.keys(a).length)
 })
