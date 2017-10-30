@@ -10,7 +10,8 @@ describe('#you have following onboard devices'.yellow, function(){
 			//console.log('<------------------------------------------------------------------------->'.rainbow)
 		})
 	})
-})
-dev$.select('id=*').listResources().then(function(a){
-	console.log(Object.keys(a).length)
+}).then(function(b){
+	dev$.select('id=*').listResources().then(function(a){
+		console.log(Object.keys(a).length)
+	})
 })
