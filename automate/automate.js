@@ -12,18 +12,16 @@ describe('#you have following onboard devices'.yellow, function(){
 		})
 	})
 })
-describe('#facades of each device'.yellow, function(){
-	this.timeout(60000)
-	it('facades of each device', function(done){
-		dev$.select('id=*').listResources().then(function(Resp){
-			len = Object.keys(Resp).length
-			for(var i = 0; i < len; i++){
-				const Resources = Object.keys(a)[i]
-				const resourcesTyp = a[Resources].type
-				console.log(Resources)
-				console.log(resourcesTyp)
-				done()
-			}
-		})
-	})
+
+dev$.select('id=*').listResources().then(function(Resp){
+	len = Object.keys(Resp).length
+	for(var i = 0; i < len; i++){
+		const Resources = Object.keys(a)[i]
+		const resourcesTyp = a[Resources].type
+		//console.log(Resources)
+		console.log(resourcesTyp)
+		
+	}
 })
+
+
