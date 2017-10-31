@@ -19,9 +19,9 @@ dev$.select('id=*').listResources().then(function(Resp){
 		for(var i = 0; i < len; i++){
 			var Resources = Object.keys(Resp)[i]
 			var resourcesTyp = Resp[Resources].type
+			var facades = b[resourcesTyp]['0.0.1'].interfaces
 			console.log(Resources)
 			console.log(resourcesTyp)
-			facades = b[resourcesTyp]['0.0.1'].interfaces
 			console.log(facades)
 		}
 	})
