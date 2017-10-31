@@ -22,7 +22,7 @@ dev$.select('id=*').listResources().then(function(Resp){
 		console.log(resourcesTyp)
 		//for(var j = 0; j < 19; j++){
 			dev$.listResourceTypes().then(function(b){
-				const facades = b[resourcesTyp]['0.0.1'].interfaces
+				var facades = b[resourcesTyp]['0.0.1'].interfaces
 				console.log(facades)
 			})
 		//}
