@@ -13,6 +13,7 @@ describe('#you have following onboard devices'.yellow, function(){
 	})
 })
 describe('#facades of each device'.yellow, function(){
+	this.timeout(60000)
 	it('facades of each device', function(done){
 		dev$.select('id=*').listResources().then(function(Resp){
 			var resrc = Object.keys(Resp)
