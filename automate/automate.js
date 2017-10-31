@@ -17,7 +17,7 @@ dev$.select('id=*').listResources().then(function(Resp){
 	len = Object.keys(Resp).length
 	for(var i = 0; i < len; i++){
 		var Resources = Object.keys(Resp)[i]
-		const resourcesTyp = Resp[Resources].type
+		var resourcesTyp = Resp[Resources].type
 		console.log(Resources)
 		console.log(resourcesTyp)
 		//done()
