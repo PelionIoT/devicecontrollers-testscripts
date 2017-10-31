@@ -20,12 +20,12 @@ dev$.select('id=*').listResources().then(function(Resp){
 		var resourcesTyp = Resp[Resources].type
 		console.log(Resources)
 		console.log(resourcesTyp)
-		//for(var j = 0; j < 19; j++){
+		for(var j = 0; j < 19; j++){
 			dev$.listResourceTypes().then(function(b){
-				var facades = b[resourcesTyp]['0.0.1'].interfaces
+				var facades = b[resourcesTyp]['0.0.1'].interfaces[j]
 				console.log(facades)
 			})
-		//}
+		}
 	}
 })
 	
