@@ -21,10 +21,11 @@ dev$.select('id=*').listResources().then(function(Resp){
 			var resourcesTyp = Resp[Resources].type
 			for(var j = 0; j < 19; j++){
 				var facades = b[resourcesTyp]['0.0.1'].interfaces[j]
-				console.log(facades)
-				const regis = Resp[Resources].registered
-				const reach = Resp[Resources].reachable
-				console.log(regis +'and' + reach)
+				//console.log(facades)
+				var regis = Resp[Resources].registered
+				var reach = Resp[Resources].reachable
+				console.log(regis +'and'.green + reach)
+				
 
 			}
 		}
