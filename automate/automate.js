@@ -24,8 +24,8 @@ dev$.select('id=*').listResources().then(function(Resp){
 				console.log(facades)
 				const regis = Resp[Resources].registered
 				const reach = Resp[Resources].reachable
-				//console.log(regis +'and' + reach)
-				
+				console.log(regis +'and' + reach)
+
 			}
 		}
 	})
