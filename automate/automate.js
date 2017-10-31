@@ -14,17 +14,17 @@ describe('#you have following onboard devices'.yellow, function(){
 })
 
 dev$.select('id=*').listResources().then(function(Resp){
-	len = Object.keys(Resp).length
-	for(var i = 0; i < len; i++){
-		var Resources = Object.keys(Resp)[i]
-		var resourcesTyp = Resp[Resources].type
-		console.log(Resources)
-		console.log(resourcesTyp)
-		dev$.listResourceTypes().then(function(b){
+	dev$.listResourceTypes().then(function(b){
+		len = Object.keys(Resp).length
+		for(var i = 0; i < len; i++){
+			var Resources = Object.keys(Resp)[i]
+			var resourcesTyp = Resp[Resources].type
+			console.log(Resources)
+			console.log(resourcesTyp)
 			facades = b[resourcesTyp]['0.0.1'].interfaces
 			console.log(facades)
-		})
-	}
+		}
+	})
 })
 
 
