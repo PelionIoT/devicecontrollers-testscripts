@@ -16,12 +16,12 @@ describe('#you have following onboard devices'.yellow, function(){
 dev$.select('id=*').listResources().then(function(Resp){
 	len = Object.keys(Resp).length
 	for(var i = 0; i < len; i++){
-		const Resources = Object.keys(a)[i]
-		const resourcesTyp = a[Resources].type
-		//console.log(Resources)
+		const Resources = Object.keys(Resp)[i]
+		const resourcesTyp = Resp[Resources].type
+		console.log(Resources)
 		console.log(resourcesTyp)
-		
-	}
-})
+		//done()
+			}
+		})
 
 
