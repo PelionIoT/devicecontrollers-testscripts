@@ -12,3 +12,15 @@ describe('#you have following onboard devices'.yellow, function(){
 		})
 	})
 })
+describe('#facades of each device'.yellow, function(){
+	it('facades of each device', function(done){
+		dev$.select('id=*').listResources().then(function(Resp){
+			var resrc = Object.keys(Resp)
+			var resrcTyp = a[resrc].type
+			console.log(resrc)
+			console.log(resrcTyp)
+			done()
+			//console.log('<------------------------------------------------------------------------->'.rainbow)
+		})
+	})
+})
