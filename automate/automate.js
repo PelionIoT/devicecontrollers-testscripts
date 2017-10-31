@@ -14,6 +14,7 @@ describe('#you have following onboard devices'.yellow, function(){
 	})
 })
 dev$.select('id=*').listResources().then(function(Resp){
+	dev$.listResourceTypes().then(function(b){
 	len = Object.keys(Resp).length 
 	for(var i = 0; i < len; i++){
 		var Resources = Object.keys(Resp)[i]
@@ -21,11 +22,12 @@ dev$.select('id=*').listResources().then(function(Resp){
 		console.log(Resources)
 		console.log(resourcesTyp)
 		//for(var j = 0; j < 19; j++){
-			dev$.listResourceTypes().then(function(b){
+			
 				var facades = b[resourcesTyp]['0.0.1'].interfaces
 				console.log(facades)
-			})
+			
 		//}
-	}
+			}
+	})
 })
 	
