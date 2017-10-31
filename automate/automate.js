@@ -21,10 +21,8 @@ dev$.select('id=*').listResources().then(function(Resp){
 		console.log(Resources)
 		console.log(resourcesTyp)
 		dev$.listResourceTypes().then(function(b){
-			
-				var facades = b[resourcesTyp]['0.0.1'].interfaces
-				console.log(facades)
-			
+			facades = b[resourcesTyp]['0.0.1'].interfaces
+			console.log(facades)
 		})
 	}
 })
