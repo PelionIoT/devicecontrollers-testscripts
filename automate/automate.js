@@ -1,6 +1,8 @@
 var assert = require('assert')
 var colors = require('colors')
 var expect = require('chai').expect
+var setstate = require('./stateproperty.js')
+var getstate = require('./get_device.js')
 
 describe('#you have following onboard devices'.yellow, function(){
 	this.timeout(300000)
@@ -23,10 +25,29 @@ dev$.select('id=*').listResources().then(function(Resp){
 		console.log(resourcesTyp)
 		//for(var j = 0; j < 19; j++){
 			
-				var facades = b[resourcesTyp]['0.0.1'].interfaces
+				var facades = b[resourcesTyp]['0.0.1'].interfaces[0]
 				console.log(facades)
 			
 		//}
+		if(facades == 'Facades/HasContact'){
+		describe(`#testing ${Resources}...`.yellow,function(done){
+			this.timeout(60000)
+				it(`${Resources} test complete`,function(done){
+					getstate('contact',Resources,facades).then(function(){
+					done()
+						//console.log('----------------------------------------------------------------')
+					},function(err){
+						reject()
+						done()
+					})
+				})
+			
+			
+				
+									
+		})
+	}	
+
 			}
 	})
 })
