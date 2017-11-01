@@ -26,16 +26,16 @@ describe('#you have following onboard devices'.yellow, function(){
 select.then(function(a){
 	len = Object.keys(a).length
 	for(var i = 0; i < len; i++){
-		const Resources = Object.keys(a)[i]
-		const resourcesTyp = a[Resources].type
+		var Resources = Object.keys(a)[i]
+		var resourcesTyp = a[Resources].type
 		//var regis = a[Resources].registered
 		//var reach = a[Resources].reachable
 			resources.then(function(b) { 
 			for(var j = 0; j < 19; j++){
-			const facades = b[resourcesTyp]['0.0.1'].interfaces[j]
+			var facades = b[resourcesTyp]['0.0.1'].interfaces[j]
 			//console.log(j)
-			const regis = a[Resources].registered
-			const reach = a[Resources].reachable
+			var regis = a[Resources].registered
+			var reach = a[Resources].reachable
 	if(facades == 'Facades/Switchable'){
 		describe(`#testing ${Resources}...`.yellow,function(){
 			this.timeout(60000)
