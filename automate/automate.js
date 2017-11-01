@@ -21,23 +21,12 @@ dev$.select('id=*').listResources().then(function(Resp){
 			var resourcesTyp = Resp[Resources].type
 			for(var j = 0; j < 19; j++){
 				var facades = b[resourcesTyp]['0.0.1'].interfaces[j]
-				//console.log(facades)
+				console.log(i +'-' +facades)
 				var regis = Resp[Resources].registered
 				var reach = Resp[Resources].reachable
 				//console.log(regis +'and'.green + reach)
 				
-				if(facades == 'Facades/Switchable'){
-					describe('first facade for test',function(){
-						it('this is tested',function(done){
-
-					dev$.selectByID(Resources).set('power', 'on').then(function(setResp) {
-						console.log(setResp)
-						done()
-					})
-					})
-				})
-
-				}
+				
 
 			}
 		}
