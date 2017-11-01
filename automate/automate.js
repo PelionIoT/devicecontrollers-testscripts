@@ -32,7 +32,7 @@ select.then(function(a){
 		//var reach = a[Resources].reachable
 			resources.then(function(b) { 
 			for(var j = 0; j < 19; j++){
-			var facades = b[resourcesTyp]['0.0.1'].interfaces[j]
+			const facades = b[resourcesTyp]['0.0.1'].interfaces[j]
 			console.log(i +'-' + facades)
 			var regis = a[Resources].registered
 			var reach = a[Resources].reachable
