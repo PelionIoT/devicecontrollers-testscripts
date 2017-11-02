@@ -34,7 +34,7 @@ list_Resources.then(function(a){
 			//listResources_type.then(function(b) { 
 			for(var j = 0; j < 19; j++){
 			const facades = b[resourcesTyp]['0.0.1'].interfaces[j]
-			//console.log(i +'-' + facades)
+			console.log(i +'-' + facades)
 			const regis = a[Resources].registered
 			const reach = a[Resources].reachable
 	if(facades == 'Facades/Switchable'){
