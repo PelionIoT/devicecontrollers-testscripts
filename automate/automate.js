@@ -5,7 +5,7 @@
  *
  * This file for the test report 
  */
-
+ "use strict"
 var assert = require('assert')
 var colors = require('colors')
 var expect = require('chai').expect
@@ -25,7 +25,7 @@ describe('#you have following onboard devices'.yellow, function(){
 })
 list_Resources.then(function(a){
 	listResources_type.then(function(b) {
-	len = Object.keys(a).length
+	var len = Object.keys(a).length
 	for(var i = 0; i < len; i++){
 		const Resources = Object.keys(a)[i]
 		const resourcesTyp = a[Resources].type
