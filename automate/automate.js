@@ -26,8 +26,8 @@ describe('#you have following onboard devices'.yellow, function(){
 list_Resources.then(function(a){
 	len = Object.keys(a).length
 	for(var i = 0; i < len; i++){
-		const Resources = Object.keys(a)[i]
-		const resourcesTyp = a[Resources].type
+		var Resources = Object.keys(a)[i]
+		var resourcesTyp = a[Resources].type
 		//var regis = a[Resources].registered
 		//var reach = a[Resources].reachable
 			listResources_type.then(function(b) { 
