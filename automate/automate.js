@@ -9,33 +9,33 @@
 var assert = require('assert')
 var colors = require('colors')
 var expect = require('chai').expect
-var select = dev$.select('id=*').listResources()
-var resources = dev$.listResourceTypes()
+var list_Resources = dev$.select('id=*').listResources()
+var listResources_type = dev$.listResourceTypes()
 var setstate = require('./stateproperty.js')
 var getstate = require('./get_device.js')
 
 describe('#you have following onboard devices'.yellow, function(){
 	it('list onboard devices compleate', function(done){
-		dev$.select('id=*').listResources().then(function(Resp){
+		list_Resources.then(function(Resp){
 			console.log(Object.keys(Resp))
 			done()
 			//console.log('<------------------------------------------------------------------------->'.rainbow)
 		})
 	})
 })
-select.then(function(a){
+list_Resources.then(function(a){
 	len = Object.keys(a).length
 	for(var i = 0; i < len; i++){
-		var Resources = Object.keys(a)[i]
-		var resourcesTyp = a[Resources].type
+		const Resources = Object.keys(a)[i]
+		const resourcesTyp = a[Resources].type
 		//var regis = a[Resources].registered
 		//var reach = a[Resources].reachable
-			resources.then(function(b) { 
+			listResources_type.then(function(b) { 
 			for(var j = 0; j < 19; j++){
-			var facades = b[resourcesTyp]['0.0.1'].interfaces[j]
+			const facades = b[resourcesTyp]['0.0.1'].interfaces[j]
 			console.log(i +'-' + facades)
-			var regis = a[Resources].registered
-			var reach = a[Resources].reachable
+			const regis = a[Resources].registered
+			const reach = a[Resources].reachable
 	if(facades == 'Facades/Switchable'){
 		describe(`#testing ${Resources}...`.yellow,function(){
 			this.timeout(60000)
