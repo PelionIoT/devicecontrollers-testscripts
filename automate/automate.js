@@ -9,8 +9,8 @@
 var assert = require('assert')
 var colors = require('colors')
 var expect = require('chai').expect
-var list_Resources = dev$.select('id=*').listResources()
-var listResources_type = dev$.listResourceTypes()
+let list_Resources = dev$.select('id=*').listResources()
+let listResources_type = dev$.listResourceTypes()
 var setstate = require('./stateproperty.js')
 var getstate = require('./get_device.js')
 
