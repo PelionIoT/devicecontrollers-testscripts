@@ -32,11 +32,11 @@ select.then(function(a){
 		//var reach = a[Resources].reachable
 			resources.then(function(b) { 
 			for(var j = 0; j < 19; j++){
-			const facades = b[resourcesTyp]['0.0.1'].interfaces[j]
+			var facades = b[resourcesTyp]['0.0.1'].interfaces[j]
 			console.log(i +'-' + facades)
 			var regis = a[Resources].registered
 			var reach = a[Resources].reachable
-	if(facades == 'Facades/Switchable'){
+	if(facades = 'Facades/Switchable'){
 		describe(`#testing ${Resources}...`.yellow,function(){
 			this.timeout(60000)
 				if(regis && reach === true){
@@ -120,7 +120,7 @@ select.then(function(a){
 		})						
 		
 	}
-	else if(facades == 'Facades/HasContact'){
+	else if(facades = 'Facades/HasContact'){
 		describe(`#testing ${Resources}...`.yellow,function(done){
 			this.timeout(60000)
 			if(regis && reach === true){
