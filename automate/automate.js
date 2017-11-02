@@ -24,13 +24,14 @@ describe('#you have following onboard devices'.yellow, function(){
 	})
 })
 list_Resources.then(function(a){
+	listResources_type.then(function(b) {
 	len = Object.keys(a).length
 	for(var i = 0; i < len; i++){
-		var Resources = Object.keys(a)[i]
-		var resourcesTyp = a[Resources].type
+		const Resources = Object.keys(a)[i]
+		const resourcesTyp = a[Resources].type
 		//var regis = a[Resources].registered
 		//var reach = a[Resources].reachable
-			listResources_type.then(function(b) { 
+			//listResources_type.then(function(b) { 
 			for(var j = 0; j < 19; j++){
 			const facades = b[resourcesTyp]['0.0.1'].interfaces[j]
 			console.log(i +'-' + facades)
@@ -975,7 +976,7 @@ list_Resources.then(function(a){
 		
 	}
 }
-													
-		})	
-	}	
+												
+		}
+	})	
 })
