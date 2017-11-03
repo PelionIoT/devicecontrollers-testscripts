@@ -18,7 +18,11 @@ describe('#you have following onboard devices'.yellow, function(){
 	it('list onboard devices compleate', function(done){
 		list_Resources.then(function(Resp){
 			console.log(Object.keys(Resp))
-	
+			done()
+			//console.log('<------------------------------------------------------------------------->'.rainbow)
+		})
+	})
+})
 list_Resources.then(function(a){
 	listResources_type.then(function(b) {
 	var len = Object.keys(a).length
@@ -30,7 +34,7 @@ list_Resources.then(function(a){
 			//listResources_type.then(function(b) { 
 			for(var j = 0; j < 19; j++){
 			const facades = b[resourcesTyp]['0.0.1'].interfaces[j]
-			//console.log(i +'-' + facades)
+			console.log(i +'-' + facades)
 			const regis = a[Resources].registered
 			const reach = a[Resources].reachable
 	if(facades == 'Facades/Switchable'){
@@ -975,8 +979,4 @@ list_Resources.then(function(a){
 												
 		}
 	})	
-})
-done()
-		})
-	})
 })
