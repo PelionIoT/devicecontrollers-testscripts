@@ -40,9 +40,10 @@ list_Resources.then(function(a){
 	if(facades == 'Facades/Switchable'){
 		//console.log(i +'-' + facades)
 		describe(`#testing ${Resources}...`.yellow,function(){
-			console.log(i +'-' + facades)
+			//console.log(i +'-' + facades)
 			this.timeout(60000)
 				if(regis && reach === true){
+					console.log(i +'-' + facades)
 					it(`${Resources} test complete`,function(done){
 					console.log(`device ${Resources} has facades- ${facades}`.blue)
 					console.log('\tdevice:'.green,Resources ,'\n',
