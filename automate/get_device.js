@@ -6,7 +6,7 @@
  *
  * This file for the test report 
  */
-
+"use strict"
 module.exports = function(stateproperty,Resources,facades){
 	return new Promise(function(resolve, reject) {
 		dev$.selectByID(Resources).get(stateproperty).then(function(getResp) {

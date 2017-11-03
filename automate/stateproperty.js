@@ -5,7 +5,7 @@
  *
  * This file for the test report 
  */
-
+"use strict"
 module.exports = function(stateproperty,setvalue,Resources,facades){
 	return new Promise(function(resolve, reject) {
 		dev$.selectByID(Resources).set(stateproperty, setvalue).then(function(setResp) {
