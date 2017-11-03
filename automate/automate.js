@@ -38,8 +38,9 @@ list_Resources.then(function(a){
 			const regis = a[Resources].registered
 			const reach = a[Resources].reachable
 	if(facades == 'Facades/Switchable'){
-		console.log(i +'-' + facades)
+		//console.log(i +'-' + facades)
 		describe(`#testing ${Resources}...`.yellow,function(){
+			console.log(i +'-' + facades)
 			this.timeout(60000)
 				if(regis && reach === true){
 					it(`${Resources} test complete`,function(done){
