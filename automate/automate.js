@@ -18,11 +18,7 @@ describe('#you have following onboard devices'.yellow, function(){
 	it('list onboard devices compleate', function(done){
 		list_Resources.then(function(Resp){
 			console.log(Object.keys(Resp))
-			done()
-			//console.log('<------------------------------------------------------------------------->'.rainbow)
-		})
-	})
-})
+	
 list_Resources.then(function(a){
 	listResources_type.then(function(b) {
 	var len = Object.keys(a).length
@@ -42,7 +38,6 @@ list_Resources.then(function(a){
 			this.timeout(60000)
 				if(regis && reach === true){
 					it(`${Resources} test complete`,function(done){
-						console.log(i +'-' + facades)
 					console.log(`device ${Resources} has facades- ${facades}`.blue)
 					console.log('\tdevice:'.green,Resources ,'\n',
 						'\ttesting facades:'.green,facades)
@@ -980,4 +975,8 @@ list_Resources.then(function(a){
 												
 		}
 	})	
+})
+done()
+		})
+	})
 })
