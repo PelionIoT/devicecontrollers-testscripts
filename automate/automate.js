@@ -14,15 +14,21 @@ let list_Resources = dev$.select('id=*').listResources()
 var setstate = require('./stateproperty.js')
 var getstate = require('./get_device.js')
 
-/*describe('#you have following onboard devices'.yellow, function() {
-    it('list onboard devices compleate', function(done) {
+describe('#you have following onboard devices'.yellow, function() {
+    it('list onboard devices compleate', function() {
         list_Resources.then(function(Resp) {
             console.log(Object.keys(Resp))
-            done()
+           // done()
             //console.log('<------------------------------------------------------------------------->'.rainbow)
         })
     })
-})*/
+})
+describe('#testing'.yellow, function() {
+    it('list onboard devices compleate', function(done) {
+       console.log('next test')
+       done()
+    })
+})
 
 var resourceTypes;
 var resources;
@@ -81,13 +87,13 @@ function getDevicesWithFacades() {
 }
 
 getDevicesWithFacades().then(function(devices) {
-    console.log('Got devices ', devices);
+    console.log('Got devices n', devices);
     Object.keys(devices).forEach(function(deviceId) {
         devices[deviceId].forEach(function(facades) {
             var regis = (registered.indexOf(deviceId) > -1);
             var reach = (reachable.indexOf(deviceId) > -1);
             console.log(facades)
-            /*if (facades == 'Facades/Switchable') {
+            if (facades == 'Facades/Switchable') {
                 describe(`#testing ${Resources}...`.yellow,function(){
                    // console.log(`${facades}`.green)
                     this.timeout(60000)
@@ -127,13 +133,9 @@ getDevicesWithFacades().then(function(devices) {
             } else {
                 console.log('some error'.red)
 
-            }*/
-            if(facades == 'Facades/Switchable'){
-                console.log('this is a light bulb'.green)              
             }
-            else if(facades == 'Facades/HasContact'){
-                console.log('this is a motion sensor'.green)              
-            }
+            
+            
         });
     });
 });
