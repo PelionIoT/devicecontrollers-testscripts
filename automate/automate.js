@@ -15,18 +15,12 @@ var setstate = require('./stateproperty.js')
 var getstate = require('./get_device.js')
 
 describe('#you have following onboard devices'.yellow, function() {
-    it('list onboard devices compleate', function() {
+    it('list onboard devices compleate', function(done) {
         list_Resources.then(function(Resp) {
             console.log(Object.keys(Resp))
            // done()
             //console.log('<------------------------------------------------------------------------->'.rainbow)
         })
-    })
-})
-describe('#testing'.yellow, function() {
-    it('list onboard devices compleate', function(done) {
-       console.log('next test')
-       done()
     })
 })
 
