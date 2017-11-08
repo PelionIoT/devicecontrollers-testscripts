@@ -86,7 +86,7 @@ getDevicesWithFacades().then(function(devices) {
         devices[deviceId].forEach(function(facades) {
             var regis = (registered.indexOf(deviceId) > -1);
             var reach = (reachable.indexOf(deviceId) > -1);
-            console.log(facades)
+            //console.log(facades)
             if (facades == 'Facades/Switchable') {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                    // console.log(`${facades}`.green)
@@ -226,7 +226,762 @@ getDevicesWithFacades().then(function(devices) {
                     }   
                     
                 })
-            }    
+            }
+            else if(facades == 'Facades/Flipflop'){
+                describe(`#testing ${deviceId}...`.yellow, function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            console.log(`device ${deviceId} has facades- ${facades}`.blue)
+                            console.log('\tdevice:'.green,deviceId ,'\n',
+                                '\ttesting facades:'.green,facades)
+                            setstate('flipflop','on',deviceId,facades).then(function() {
+                                //done();
+                                //resolve area
+                            }, function(err) {
+                                done(new Error("promise is not resolved"));
+                                //reject
+                            }).then(function() {
+                                setstate('flipflop','off',deviceId,facades).then(function() {
+                                    console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
+                                    done();
+                                        //resolve
+                                }, function(err) {
+                                    done(new Error("promise is not resolved"));
+                                    //reject
+                                });
+                            });
+                        })      
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }       
+                })
+            }
+            else if(facades == 'Facades/Humidity'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('humidity',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                done(new Error("promise is not resolved"));
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }   
+                })
+            } 
+            else if(facades == 'Facades/HasLuminance'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('luminance',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }  
+                })
+            }   
+            else if(facades == 'Facades/HasMotion'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('motion',deviceId,facades).then(function(){
+                                done()
+                                //console.log('-----------------------------------------------------------------')
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }  
+                })
+            }
+            else if(facades == 'Facades/Regulator'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('regulator',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }  
+                })
+            }   
+            else if(facades == 'Facades/HasSmokeAlarm'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('smoke',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }  
+                })
+            }       
+            else if(facades == 'Facades/HasTemperature'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('temperature',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }  
+                })
+            }   
+            else if(facades == 'Facades/ThermostatMode'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            console.log(`device ${deviceId} has facades- ${facades}`.blue)
+                            console.log('\tdevice:'.green,deviceId ,'\n',
+                                '\ttesting facades:'.green,facades)
+                            setstate('thermostatMode', 'heat',deviceId,facades).then(function() {
+                                //done();
+                                //resolve area
+                            }, function(err) {
+                                console.log('Error!')
+                                //reject
+                            }).then(function() {
+                                setstate('thermostatMode', 'cool',deviceId,facades).then(function() {
+                                        //done();
+                                            //resolve
+                                    }, function(err) {
+                                        console.log('Error!')
+                                        //reject
+                                }).then(function() {
+                                    setstate('thermostatMode', 'auto',deviceId,facades).then(function() {
+                                        //done();
+                                            //resolve
+                                    }, function(err) {
+                                        console.log('Error!')
+                                        //reject
+                                }).then(function() {
+                                    setstate('thermostatMode', 'off',deviceId,facades).then(function() {
+                                        console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
+                                        done();
+                                            //resolve
+                                    }, function(err) {
+                                        console.log('Error!')
+                                        //reject
+                                })
+                                    
+                            })      
+                            })      
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }  
+                })
+            }
+            else if(facades == 'Facades/HasVibration'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('vibration',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }  
+                })
+            }
+            else if(facades == 'Facades/HasWaterLeakDetector'){
+                describe(`#testing ${deviceId}...`.yellow,function(done){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(){
+                            getstate('waterleak',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/OccupiedCoolTemperatureLevel'){
+                describe(`#testing ${deviceId}...`.yellow.underline.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('occupiedCoolTemperatureLevel',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/OccupiedHeatTemperatureLevel'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('occupiedHeatTemperatureLevel',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/OccupiedAutoTemperatureLevel'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('occupiedAutoTemperatureLevel',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/UnoccupiedCoolTemperatureLevel'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('unoccupiedCoolTemperatureLevel',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/UnoccupiedHeatTemperatureLevel'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('unoccupiedHeatTemperatureLevel',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/UnoccupiedAutoTemperatureLevel'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('unoccupiedAutoTemperatureLevel',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/ThermostatReturnTemperature'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('returnTemperature',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/ThermostatSupplyTemperature'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('supplyTemperature',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/ThermostatDeadband'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('deadband',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/ThermostatW1Status'){
+                describe(`#testing ${deviceId}...`.yellow, function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            console.log(`device ${deviceId} has facades- ${facades}`.blue)
+                            console.log('\tdevice:'.green,deviceId ,'\n',
+                                '\ttesting facades:'.green,facades)
+                            setstate('w1Status','open',deviceId,facades).then(function() {
+                                //done();
+                                //resolve area
+                            }, function(err) {
+                                console.log('Error!')
+                                //reject
+                            }).then(function() {
+                                setstate('w1Status','close',deviceId,facades).then(function() {
+                                    console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
+                                    done();
+                                        //resolve
+                                }, function(err) {
+                                    console.log('Error!')
+                                    //reject
+                                });
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/ThermostatW2Status'){
+                describe(`#testing ${deviceId}...`.yellow, function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            console.log(`device ${deviceId} has facades- ${facades}`.blue)
+                            console.log('\tdevice:'.green,deviceId ,'\n',
+                                '\ttesting facades:'.green,facades)
+                            setstate('w2Status','open',deviceId,facades).then(function() {
+                                //done();
+                                //resolve area
+                            }, function(err) {
+                                console.log('Error!')
+                                //reject
+                            }).then(function() {
+                                setstate('w2Status','close',deviceId,facades).then(function() {
+                                    console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
+                                    done();
+                                        //resolve
+                                }, function(err) {
+                                    console.log('Error!')
+                                    //reject
+                                });
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/ThermostatY1Status'){
+                describe(`#testing ${deviceId}...`.yellow, function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            console.log(`device ${deviceId} has facades- ${facades}`.blue)
+                            console.log('\tdevice:'.green,deviceId ,'\n',
+                                '\ttesting facades:'.green,facades)
+                            setstate('y1Status','open',deviceId,facades).then(function() {
+                                //done();
+                                //resolve area
+                            }, function(err) {
+                                console.log('Error!')
+                                //reject
+                            }).then(function() {
+                                setstate('y1Status','close',deviceId,facades).then(function() {
+                                    console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
+                                    done();
+                                        //resolve
+                                }, function(err) {
+                                    console.log('Error!')
+                                    //reject
+                                });
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/ThermostatY2Status'){
+                describe(`#testing ${deviceId}...`.yellow, function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            console.log(`device ${deviceId} has facades- ${facades}`.blue)
+                            console.log('\tdevice:'.green,deviceId ,'\n',
+                                '\ttesting facades:'.green,facades)
+                            setstate('y2Status','open',deviceId,facades).then(function() {
+                                //done();
+                                //resolve area
+                            }, function(err) {
+                                console.log('Error!')
+                                //reject
+                            }).then(function() {
+                                setstate('y2Status','close',deviceId,facades).then(function() {
+                                    console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
+                                    done();
+                                        //resolve
+                                }, function(err) {
+                                    console.log('Error!')
+                                    //reject
+                                });
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/ThermostatGStatus'){
+                describe(`#testing ${deviceId}...`.yellow, function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            console.log(`device ${deviceId} has facades- ${facades}`.blue)
+                            console.log('\tdevice:'.green,deviceId ,'\n',
+                                '\ttesting facades:'.green,facades)
+                            setstate('gStatus','open',deviceId,facades).then(function() {
+                                //done();
+                                //resolve area
+                            }, function(err) {
+                                console.log('Error!')
+                                //reject
+                            }).then(function() {
+                                setstate('gStatus','close',deviceId,facades).then(function() {
+                                    console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
+                                    done();
+                                        //resolve
+                                }, function(err) {
+                                    console.log('Error!')
+                                    //reject
+                                });
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/KeypadLockLevel'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('keypadLockLevel',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                reject()
+                                done()
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/TemperatureDisplayMode'){
+                describe(`#testing ${deviceId}...`.yellow, function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            console.log(`device ${deviceId} has facades- ${facades}`.blue)
+                            console.log('\tdevice:'.green,deviceId ,'\n',
+                                '\ttesting facades:'.green,facades)
+                            setstate('temperatureDisplayMode','celsius',deviceId,facades).then(function() {
+                                //done();
+                                //resolve area
+                            }, function(err) {
+                                console.log('Error!')
+                                //reject
+                            }).then(function() {
+                                setstate('temperatureDisplayMode','fahrenheit',deviceId,facades).then(function() {
+                                    console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
+                                    done();
+                                        //resolve
+                                }, function(err) {
+                                    console.log('Error!')
+                                    //reject
+                                });
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }
+            else if(facades == 'Facades/OccupancyMode'){
+                describe(`#testing ${deviceId}...`.yellow, function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            console.log(`device ${deviceId} has facades- ${facades}`.blue)
+                            console.log('\tdevice:'.green,deviceId ,'\n',
+                                '\ttesting facades:'.green,facades)
+                            setstate('occupancyMode','occupied',deviceId,facades).then(function() {
+                                //done();
+                                //resolve area
+                            }, function(err) {
+                                console.log('Error!')
+                                //reject
+                            }).then(function() {
+                                setstate('occupancyMode','unoccupied',deviceId,facades).then(function() {
+                                    console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
+                                    done();
+                                        //resolve
+                                }, function(err) {
+                                    console.log('Error!')
+                                    //reject
+                                });
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    } 
+                })
+            }   
         });
     });
 });
