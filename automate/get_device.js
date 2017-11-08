@@ -7,26 +7,26 @@
  * This file for the test report 
  */
 "use strict"
-module.exports = function(stateproperty,Resources,facades){
+module.exports = function(stateproperty,deviceId,facades){
 	return new Promise(function(resolve, reject) {
-		dev$.selectByID(Resources).get(stateproperty).then(function(getResp) {
-			if(getResp && getResp[Resources] && getResp[Resources].response && typeof getResp[Resources].response.result !== 'undefined') {
-				console.log(`device ${Resources} has facades- ${facades}`.blue)
-				console.log('\tdevice:'.green,Resources ,'\n',
+		dev$.selectByID(deviceId).get(stateproperty).then(function(getResp) {
+			if(getResp && getResp[deviceId] && getResp[deviceId].response && typeof getResp[deviceId].response.result !== 'undefined') {
+				console.log(`device ${deviceId} has facades- ${facades}`.blue)
+				console.log('\tdevice:'.green,deviceId ,'\n',
 						'\ttesting facades:'.green,facades ,'\n',
 						'\t\tGet State:'.green,stateproperty ,'\n',
-						'\t\tReceive responce:'.green,getResp[Resources].receivedResponse ,'\n',
-						'\t\tResponce result:'.green,getResp[Resources].response.result ,'\n',
-						'\t\tError:'.green,getResp[Resources].response.error)
-				console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
+						'\t\tReceive responce:'.green,getResp[deviceId].receivedResponse ,'\n',
+						'\t\tResponce result:'.green,getResp[deviceId].response.result ,'\n',
+						'\t\tError:'.green,getResp[deviceId].response.error)
+				console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
 				resolve()
 			}
 			else{
 				console.log(`something is undefined hear for ${rs}`.red)
-				expect(getResp && getResp[Resources] && getResp[Resources].response && typeof getResp[Resources].response.result).not.to.equal('undefined')
+				expect(getResp && getResp[deviceId] && getResp[deviceId].response && typeof getResp[deviceId].response.result).not.to.equal('undefined')
 			}
 		}),function(err){
-			reject()
+			reject(new Error("promise is not resolved")
 		}
 	})
 }

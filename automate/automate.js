@@ -81,7 +81,7 @@ function getDevicesWithFacades() {
 }
 
 getDevicesWithFacades().then(function(devices) {
-    console.log('Got devices n', devices);
+    console.log('Got devices \n', devices);
     Object.keys(devices).forEach(function(deviceId) {
         devices[deviceId].forEach(function(facades) {
             var regis = (registered.indexOf(deviceId) > -1);
@@ -124,12 +124,72 @@ getDevicesWithFacades().then(function(devices) {
                         }   
                 })
 
-            } else {
-                console.log(`#testing ${deviceId}...`.yellow)
-
+            } 
+            else if(facades == 'Facades/HasBattery'){
+                //console.log(regis)
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('battery',deviceId,facades).then(function(){
+                            done()
+                        },function(err){
+                        //reject()
+                        done(new Error("promise is not resolved"));
+                        })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }   
+                })                      
             }
-            
-            
+           else if(facades == 'Facades/Button'){
+                describe(`#testing ${deviceId}...`.yellow,function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('pressed',deviceId,facades).then(function(){
+                                done()
+                            },function(err){
+                                //reject()
+                                done(new Error("promise is not resolved"));
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }   
+                })                      
+            }
+            else if(facades == 'Facades/HasContact'){
+                describe(`#testing ${deviceId}...`.yellow,function(done){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            getstate('contact',deviceId,facades).then(function(){
+                                done()
+                                //console.log('----------------------------------------------------------------')
+                            },function(err){
+                                //reject()
+                               done(new Error("promise is not resolved"));
+                            })
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }  
+                })
+            }    
         });
     });
 });
