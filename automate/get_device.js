@@ -26,7 +26,7 @@ module.exports = function(stateproperty,deviceId,facades){
 				expect(getResp && getResp[deviceId] && getResp[deviceId].response && typeof getResp[deviceId].response.result).not.to.equal('undefined')
 			}
 		}),function(err){
-			reject(new Error("promise is not resolved")
+			reject(new Error("promise is not resolved"))
 		}
 	})
 }
