@@ -189,6 +189,43 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }  
                 })
+            }
+            else if(facades == 'Facades/HasLock'){
+                describe(`#testing ${deviceId}...`.yellow, function(){
+                    this.timeout(60000)
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete`,function(done){
+                            console.log(`device ${deviceId} has facades- ${facades}`.blue)
+                            console.log('\tdevice:'.green,deviceId ,'\n',
+                                '\ttesting facades:'.green,facades)
+                            setstate('lock','lock',deviceId,facades).then(function() {
+                                //done();
+                                //resolve area
+                            }, function(err) {
+                                done(new Error("promise is not resolved"));
+                                //reject
+                            }).then(function() {
+                                setstate('lock','unlock',deviceId,facades).then(function() {
+                                    console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
+                                    done();
+                                        //resolve
+                                }, function(err) {
+                                    done(new Error("promise is not resolved"));
+                                    //reject
+                                });
+                            }); 
+                        })
+                    }
+                    else{
+                        it(`${deviceId} test fail`,function(done){
+                            console.log(`problem in the ${deviceId}`)
+                            //this.skip()
+                            //expect(regis && reach).to.deep.equal(true);
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }   
+                    
+                })
             }    
         });
     });
