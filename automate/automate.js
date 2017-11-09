@@ -891,7 +891,7 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                                it(`${deviceId} test complete`,function(done){
+                                it(`${deviceId} test fail`,function(done){
                                     done(new Error("promise is not resolved"));
                                 })
                             }).then(function() {
@@ -900,7 +900,7 @@ getDevicesWithFacades().then(function(devices) {
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    it(`${deviceId} test complete`,function(done){
+                                    it(`${deviceId} test fail`,function(done){
                                         done(new Error("promise is not resolved"));
                                     })
                                 });
