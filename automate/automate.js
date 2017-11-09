@@ -891,14 +891,18 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                               done(new Error("promise is not resolved"));
+                                it(`${deviceId} test complete`,function(done){
+                                    done(new Error("promise is not resolved"));
+                                })
                             }).then(function() {
                                 setstate('temperatureDisplayMode','fahrenheit',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    done(new Error("promise is not resolved"));
+                                    it(`${deviceId} test complete`,function(done){
+                                        done(new Error("promise is not resolved"));
+                                    })
                                 });
                             })
                         })
