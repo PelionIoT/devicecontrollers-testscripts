@@ -98,20 +98,20 @@ getDevicesWithFacades().then(function(devices) {
                                 '\ttesting facades:'.green,facades)
                             setstate('power','on',deviceId,facades).then(function() {
                             }, function(err) {
-                                it(`${deviceId} test fail`,function(done){
+                                
                                     console.log(`problem in the ${deviceId}`)
                                     done(new Error("promise is not resolve"));
-                                })
+                                
                             }).then(function() {
                                 setstate('power','off', deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
                                     //resolve
                                 }, function(err) {
-                                    it(`${Resources} test fail`,function(done){
+                                    
                                         console.log(`problem in the ${deviceId}`)
                                         done(new Error("promise is not resolved"));
-                                    })
+                                   
                                 });
                             });
                             })
