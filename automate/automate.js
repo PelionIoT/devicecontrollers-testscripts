@@ -75,7 +75,7 @@ describe('#you have following onboard devices'.yellow, function() {
 it('got device compleate',function(done){
 getDevicesWithFacades().then(function(devices) {
     console.log('Got devices with facades\n'.blue, devices);
-    //done()
+    done()
     Object.keys(devices).forEach(function(deviceId) {
         devices[deviceId].forEach(function(facades) {
             var regis = (registered.indexOf(deviceId) > -1);
