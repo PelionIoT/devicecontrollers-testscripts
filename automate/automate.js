@@ -14,7 +14,15 @@ let list_Resources = dev$.select('id=*').listResources()
 var setstate = require('./stateproperty.js')
 var getstate = require('./get_device.js')
 
-
+describe('#you have following onboard devices'.yellow, function() {
+    it('list onboard devices compleate', function(done) {
+        list_Resources.then(function(Resp) {
+            console.log(Object.keys(Resp))
+           // done()
+            //console.log('<------------------------------------------------------------------------->'.rainbow)
+        })
+    })
+})
 
 var resourceTypes;
 var resources;
@@ -71,11 +79,9 @@ function getDevicesWithFacades() {
         });
     });
 }
-describe('#you have following onboard devices'.yellow, function() {
-it('got device compleate',function(done){
+
 getDevicesWithFacades().then(function(devices) {
-    console.log('Got devices with facades\n'.blue, devices);
-    done()
+    console.log('Got devices \n', devices);
     Object.keys(devices).forEach(function(deviceId) {
         devices[deviceId].forEach(function(facades) {
             var regis = (registered.indexOf(deviceId) > -1);
@@ -102,7 +108,7 @@ getDevicesWithFacades().then(function(devices) {
                                     done();
                                     //resolve
                                 }, function(err) {
-                                
+                                    
                                         console.log(`problem in the ${deviceId}`)
                                         done(new Error("promise is not resolved"));
                                    
@@ -944,7 +950,3 @@ getDevicesWithFacades().then(function(devices) {
         });
     });
 });
-
-
-    })
-})
