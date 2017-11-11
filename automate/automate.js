@@ -72,17 +72,9 @@ function getDevicesWithFacades() {
     });
 }
 describe('#you have following onboard devices'.yellow, function() {
-    it('list onboard devices compleate', function(done) {
-        list_Resources.then(function(Resp) {
-            console.log(Object.keys(Resp))
-            done()
-            //console.log('<------------------------------------------------------------------------->'.rainbow)
-        })
-    })
-        
 it('got device compleate',function(done){
 getDevicesWithFacades().then(function(devices) {
-    console.log('Got devices \n', devices);
+    console.log('Got devices with facades\n'.blue, devices);
     done()
     Object.keys(devices).forEach(function(deviceId) {
         devices[deviceId].forEach(function(facades) {
