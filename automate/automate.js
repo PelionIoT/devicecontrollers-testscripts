@@ -94,7 +94,7 @@ getDevicesWithFacades().then(function(devices) {
                             }, function(err) {
                                 
                                     console.log(`problem in the ${deviceId}`)
-                                   // done(new Error("promise is not resolve"));
+                                   done('set failed with ' + err);
                                 
                             }).then(function() {
                                 setstate('power','off', deviceId,facades).then(function() {
