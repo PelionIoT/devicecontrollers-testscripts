@@ -94,7 +94,7 @@ getDevicesWithFacades().then(function(devices) {
                             }, function(err) {
                                 
                                     console.log(`problem in the ${deviceId}`)
-                                   done('set failed with ' + err);
+                                   done('set f ' + err);
                                 
                             }).then(function() {
                                 setstate('power','off', deviceId,facades).then(function() {
@@ -104,7 +104,7 @@ getDevicesWithFacades().then(function(devices) {
                                 }, function(err) {
                                 
                                         console.log(`problem in the ${deviceId}`)
-                                        done('set failed with ' + err);
+                                        done('setting power to off failed with error - ' + err);
                                    
                                 });
                             });

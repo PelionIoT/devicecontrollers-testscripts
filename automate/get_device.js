@@ -22,11 +22,10 @@ module.exports = function(stateproperty,deviceId,facades){
 				resolve()
 			}
 			else{
-				console.log(`something is undefined hear for ${rs}`.red)
-				expect(getResp && getResp[deviceId] && getResp[deviceId].response && typeof getResp[deviceId].response.result).not.to.equal('undefined')
+				reject("Device get undefined response " + getResp[deviceId].response.error)
 			}
 		}),function(err){
-			reject(new Error("promise is not resolved"))
+			reject("Device get response failed " + err)
 		}
 	})
 }

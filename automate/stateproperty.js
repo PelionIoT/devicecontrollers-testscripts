@@ -27,22 +27,22 @@ module.exports = function(stateproperty,setvalue,deviceId,facades){
 							resolve();
 							//Previous set successfully set the power value to 'on'
 						} else {
-							reject(new Error("result is not set value"));
+							reject(new Error("Device get responese is not equal to set value"));
 						}
 					} else {
 						
-						reject(new Error("something is undefined"));
+						reject(new Error("Device get undefined responce" + getResp[deviceId].response.error));
 					}
 				}, function(err) {
 					//console.log('Error!')
-					reject(new Error("promise is not resolved"))
+					reject(new Error("Device get responce failed " + err))
 				});
 			} else {
-				reject(new Error("error and some settings are not null"));
+				reject(new Error("Device set failed " + setResp[deviceId].response.error));
 			}
 			}, function(err) {
 			//console.log('Error!')
-			reject(new Error("promise is not resolved"));
+			reject(new Error("Device set responce failed " + err));
 		});
 	});
 }
