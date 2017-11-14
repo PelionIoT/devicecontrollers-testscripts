@@ -104,7 +104,7 @@ getDevicesWithFacades().then(function(devices) {
                                 }, function(err) {
                                 
                                         console.log(`problem in the ${deviceId}`)
-                                        done(new Error("promise is not resolved"));
+                                        done('set failed with ' + err);
                                    
                                 });
                             });
