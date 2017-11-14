@@ -86,7 +86,7 @@ getDevicesWithFacades().then(function(devices) {
                    // console.log(`${facades}`.green)
                     this.timeout(60000)
                         if(regis && reach === true){
-                            it(`${deviceId} test complete`,function(done){
+                            it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
@@ -111,7 +111,7 @@ getDevicesWithFacades().then(function(devices) {
                             })
                         } 
                         else{
-                            it(`${deviceId} test fail`,function(done){
+                            it(`${deviceId} test fail for facade ${facades}`,function(done){
                                 console.log(`problem in the ${deviceId}`)
                                 done(new Error("either device is not registered or reachable or both"));
                             })
@@ -124,7 +124,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('battery',deviceId,facades).then(function(){
                             done()
                         },function(err){
@@ -134,7 +134,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             done(new Error("either device is not registered or reachable or both"));
                         })
@@ -145,7 +145,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}}`,function(done){
                             getstate('pressed',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -155,7 +155,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             done(new Error("either device is not registered or reachable or both"));
                         })
@@ -166,7 +166,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(done){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('contact',deviceId,facades).then(function(){
                                 done()
                                 //console.log('----------------------------------------------------------------')
@@ -177,7 +177,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             done(new Error("either device is not registered or reachable or both"));
                         })
@@ -188,7 +188,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow, function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
@@ -211,7 +211,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -225,7 +225,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow, function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
@@ -248,7 +248,7 @@ getDevicesWithFacades().then(function(devices) {
                         })      
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -261,7 +261,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('humidity',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -270,7 +270,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -283,7 +283,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('luminance',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -292,7 +292,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -305,7 +305,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('motion',deviceId,facades).then(function(){
                                 done()
                                 //console.log('-----------------------------------------------------------------')
@@ -315,7 +315,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -328,7 +328,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('regulator',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -337,7 +337,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -350,7 +350,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('smoke',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -359,7 +359,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -372,7 +372,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('temperature',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -381,7 +381,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -394,7 +394,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
@@ -429,7 +429,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -442,7 +442,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('vibration',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -451,7 +451,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -464,7 +464,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(done){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(){
+                        it(`${deviceId} test complete for facade ${facades}`,function(){
                             getstate('waterleak',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -473,7 +473,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -486,7 +486,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('occupiedCoolTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -495,7 +495,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -508,7 +508,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('occupiedHeatTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -517,7 +517,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -530,7 +530,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('occupiedAutoTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -539,7 +539,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -552,7 +552,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('unoccupiedCoolTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -561,7 +561,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -574,7 +574,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('unoccupiedHeatTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -583,7 +583,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -596,7 +596,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('unoccupiedAutoTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -605,7 +605,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -618,7 +618,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('returnTemperature',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -627,7 +627,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -640,7 +640,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('supplyTemperature',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -649,7 +649,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -662,7 +662,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('deadband',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -671,7 +671,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -684,7 +684,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow, function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
@@ -705,7 +705,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -718,7 +718,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow, function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
@@ -739,7 +739,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -752,7 +752,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow, function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
@@ -774,7 +774,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -787,7 +787,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow, function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
@@ -808,7 +808,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -821,7 +821,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow, function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
@@ -842,7 +842,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -855,7 +855,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('keypadLockLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
@@ -864,7 +864,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -877,7 +877,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow, function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
@@ -898,7 +898,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
@@ -911,7 +911,7 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow, function(){
                     this.timeout(60000)
                     if(regis && reach === true){
-                        it(`${deviceId} test complete`,function(done){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
@@ -932,7 +932,7 @@ getDevicesWithFacades().then(function(devices) {
                         })
                     }
                     else{
-                        it(`${deviceId} test fail`,function(done){
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
                             console.log(`problem in the ${deviceId}`)
                             //this.skip()
                             //expect(regis && reach).to.deep.equal(true);
