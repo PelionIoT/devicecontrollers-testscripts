@@ -93,8 +93,8 @@ getDevicesWithFacades().then(function(devices) {
                             setstate('power','on',deviceId,facades).then(function() {
                             }, function(err) {
                                 
-                                    console.log(`problem in the ${facades} of ${deviceId}`)
-                                   done('setting power to on  failed with ' + err);
+                                    console.log(`Error while setting power to on`.red)
+                                    done('setting power to on  failed with ' + err);
                                 
                             }).then(function() {
                                 setstate('power','off', deviceId,facades).then(function() {
@@ -103,7 +103,7 @@ getDevicesWithFacades().then(function(devices) {
                                     //resolve
                                 }, function(err) {
                                 
-                                        console.log(`problem in the ${facades} of ${deviceId}`)
+                                        console.log(`Error while setting power to off`.red)
                                         done('setting power to off failed with ' + err);
                                    
                                 });
@@ -112,7 +112,7 @@ getDevicesWithFacades().then(function(devices) {
                         } 
                         else{
                             it(`${deviceId} test fail for facade ${facades}`,function(done){
-                                console.log(`problem in the ${deviceId}`)
+                                console.log(`Error while setting ${facades} of ${deviceId}`.red)
                                 done(new Error("either device is not registered or reachable or both"));
                             })
                         }   
@@ -128,14 +128,14 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('battery',deviceId,facades).then(function(){
                             done()
                         },function(err){
-                            console.log(`problem in the ${facades} of ${deviceId}`)
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done('getting power of battery failed with ' + err);
                         })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }   
