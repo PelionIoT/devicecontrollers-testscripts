@@ -27,6 +27,7 @@ function isDeviceInterface(value) {
     return (value.indexOf('Facades') != -1);
 }
 
+console.log('------------------------' + process.argv.length +'----------------------')
 function getDevicesWithFacades() {
     var devices = {};
     return new Promise(function(resolve, reject) {
@@ -93,7 +94,7 @@ getDevicesWithFacades().then(function(devices) {
                             setstate('power','on',deviceId,facades).then(function() {
                             }, function(err) {
                                 
-                                    console.log(`Error while setting power to on`.red)
+                                    console.log(`Error while setting power to off of ${deviceId}`.red)
                                     done('setting power to on  failed with ' + err);
                                 
                             }).then(function() {
@@ -103,7 +104,7 @@ getDevicesWithFacades().then(function(devices) {
                                     //resolve
                                 }, function(err) {
                                 
-                                        console.log(`Error while setting power to off`.red)
+                                        console.log(`Error while setting power to off of ${deviceId}`.red)
                                         done('setting power to off failed with ' + err);
                                    
                                 });
@@ -128,7 +129,7 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('battery',deviceId,facades).then(function(){
                             done()
                         },function(err){
-                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
+                            console.log(`Error while getting battery of ${deviceId}`.red)
                             done('getting power of battery failed with ' + err);
                         })
                         })
@@ -149,7 +150,7 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('pressed',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting button status of ${deviceId}`.red)
                                 done('geting push button failed with ' + err);
                             })
                         })
@@ -171,7 +172,7 @@ getDevicesWithFacades().then(function(devices) {
                                 done()
                                 //console.log('----------------------------------------------------------------')
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting contact sensors of ${deviceId}`.red)
                                 done('getting contact sensor failed with ' + err);
                             })
                         })
@@ -196,7 +197,7 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while setting Doorlock to lock of ${deviceId}`.red)
                                 done('setting Doorlock to lock failed with ' + err);
                             }).then(function() {
                                 setstate('lock','unlock',deviceId,facades).then(function() {
@@ -204,7 +205,7 @@ getDevicesWithFacades().then(function(devices) {
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    console.log(`Error while setting Doorlock to unlock of ${deviceId}`.red)
                                     done('setting Doorlock to unlocked failed with ' + err);
                                 });
                             }); 
@@ -233,7 +234,7 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                 console.log(`Error while setting flipflop to on of ${deviceId}`.red)
                                 done('setting flipflop to on failed with ' + err);
                             }).then(function() {
                                 setstate('flipflop','off',deviceId,facades).then(function() {
@@ -241,8 +242,8 @@ getDevicesWithFacades().then(function(devices) {
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    console.log(`problem in the ${facades} of ${deviceId}`)
-                                done('setting flipflop to off failed with ' + err);
+                                     console.log(`Error while setting flipflop to off of ${deviceId}`.red)
+                                    done('setting flipflop to off failed with ' + err);
                                 });
                             });
                         })      
@@ -265,7 +266,7 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('humidity',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                 console.log(`Error while getting humidity of ${deviceId}`.red)
                                 done('getting humidity failed with ' + err);
                             })
                         })
