@@ -93,8 +93,8 @@ getDevicesWithFacades().then(function(devices) {
                             setstate('power','on',deviceId,facades).then(function() {
                             }, function(err) {
                                 
-                                    console.log(`problem in the ${deviceId}`)
-                                   done('set f ' + err);
+                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                   done('setting power to on  failed with ' + err);
                                 
                             }).then(function() {
                                 setstate('power','off', deviceId,facades).then(function() {
@@ -103,8 +103,8 @@ getDevicesWithFacades().then(function(devices) {
                                     //resolve
                                 }, function(err) {
                                 
-                                        console.log(`problem in the ${deviceId}`)
-                                        done('setting power to off failed with error - ' + err);
+                                        console.log(`problem in the ${facades} of ${deviceId}`)
+                                        done('setting power to off failed with ' + err);
                                    
                                 });
                             });
@@ -128,8 +128,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('battery',deviceId,facades).then(function(){
                             done()
                         },function(err){
-                        //reject()
-                        done(new Error("promise is not resolved"));
+                            console.log(`problem in the ${facades} of ${deviceId}`)
+                            done('getting power of battery failed with ' + err);
                         })
                         })
                     }
@@ -149,8 +149,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('pressed',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                                //reject()
-                                done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('geting push button failed with ' + err);
                             })
                         })
                     }
@@ -171,8 +171,8 @@ getDevicesWithFacades().then(function(devices) {
                                 done()
                                 //console.log('----------------------------------------------------------------')
                             },function(err){
-                                //reject()
-                               done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting contact sensor failed with ' + err);
                             })
                         })
                     }
@@ -196,16 +196,16 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                                done(new Error("promise is not resolved"));
-                                //reject
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting Doorlock to lock failed with ' + err);
                             }).then(function() {
                                 setstate('lock','unlock',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    done(new Error("promise is not resolved"));
-                                    //reject
+                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    done('setting Doorlock to unlocked failed with ' + err);
                                 });
                             }); 
                         })
@@ -233,16 +233,16 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                                done(new Error("promise is not resolved"));
-                                //reject
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting flipflop to on failed with ' + err);
                             }).then(function() {
                                 setstate('flipflop','off',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    done(new Error("promise is not resolved"));
-                                    //reject
+                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting flipflop to off failed with ' + err);
                                 });
                             });
                         })      
@@ -265,7 +265,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('humidity',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                                done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting humidity failed with ' + err);
                             })
                         })
                     }
@@ -287,7 +288,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('luminance',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                                done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting luminance failed with ' + err);
                             })
                         })
                     }
@@ -310,7 +312,8 @@ getDevicesWithFacades().then(function(devices) {
                                 done()
                                 //console.log('-----------------------------------------------------------------')
                             },function(err){
-                                done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting motion sensor failed with ' + err);
                             })
                         })
                     }
@@ -332,7 +335,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('regulator',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                                done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting regulator failed with ' + err);
                             })
                         })
                     }
@@ -354,7 +358,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('smoke',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                                done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting smoke alarm failed with ' + err);
                             })
                         })
                     }
@@ -376,7 +381,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('temperature',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                                done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting temperature failed with ' + err);
                             })
                         })
                     }
@@ -402,26 +408,29 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                               done(new Error("promise is not resolved"));
+                               console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting thermostat to heat failed with ' + err);
                             }).then(function() {
                                 setstate('thermostatMode', 'cool',deviceId,facades).then(function() {
-                                        //done();
-                                            //resolve
+                                    
                                     }, function(err) {
-                                        done(new Error("promise is not resolved"));
+                                        console.log(`problem in the ${facades} of ${deviceId}`)
+                                        done('setting thermostat to cool failed with ' + err);
                                 }).then(function() {
                                     setstate('thermostatMode', 'auto',deviceId,facades).then(function() {
                                         //done();
                                             //resolve
                                     }, function(err) {
-                                        done(new Error("promise is not resolved"));
+                                        console.log(`problem in the ${facades} of ${deviceId}`)
+                                        done('setting thermostat to auto failed with ' + err);
                                 }).then(function() {
                                     setstate('thermostatMode', 'off',deviceId,facades).then(function() {
                                         console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                         done();
                                             //resolve
                                     }, function(err) {
-                                       done(new Error("promise is not resolved"));
+                                       console.log(`problem in the ${facades} of ${deviceId}`)
+                                        done('setting thermostat to off failed with ' + err);
                                     })
                                 })      
                             })      
@@ -446,7 +455,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('vibration',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                                done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting vibration failed with ' + err);
                             })
                         })
                     }
@@ -468,7 +478,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('waterleak',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                              done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting waterleak failed with ' + err);
                             })
                         })
                     }
@@ -490,7 +501,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('occupiedCoolTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                              done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting occupiedCoolTemperatureLevel failed with ' + err);
                             })
                         })
                     }
@@ -512,7 +524,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('occupiedHeatTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                              done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting occupiedHeatTemperatureLevel failed with ' + err);
                             })
                         })
                     }
@@ -534,7 +547,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('occupiedAutoTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                            done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting occupiedAutoTemperatureLevel failed with ' + err);
                             })
                         })
                     }
@@ -556,7 +570,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('unoccupiedCoolTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                               done(new Error("promise is not resolved"));
+                               console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting UnoccupiedCoolTemperatureLevel failed with ' + err);
                             })
                         })
                     }
@@ -578,7 +593,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('unoccupiedHeatTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                              done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting UnoccupiedHeatTemperatureLevel failed with ' + err);
                             })
                         })
                     }
@@ -600,7 +616,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('unoccupiedAutoTemperatureLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                               done(new Error("promise is not resolved"));
+                               console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting UnoccupiedAutoTemperatureLevel failed with ' + err);
                             })
                         })
                     }
@@ -622,7 +639,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('returnTemperature',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                              done(new Error("promise is not resolved"));
+                              console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting return temperature failed with ' + err);
                             })
                         })
                     }
@@ -644,7 +662,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('supplyTemperature',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                             done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting supply temperature failed with ' + err);
                             })
                         })
                     }
@@ -666,7 +685,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('deadband',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                               done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting deadband failed with ' + err);
                             })
                         })
                     }
@@ -692,14 +712,16 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                               done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting w1Status to open failed with ' + err);
                             }).then(function() {
                                 setstate('w1Status','close',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    done(new Error("promise is not resolved"));
+                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    done('setting w1Status to close failed with ' + err);
                                 });
                             })
                         })
@@ -726,14 +748,16 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                               done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting w2Status to open failed with ' + err);
                             }).then(function() {
                                 setstate('w2Status','close',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    done(new Error("promise is not resolved"));
+                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    done('setting w2Status to close failed with ' + err);
                                 });
                             })
                         })
@@ -760,15 +784,16 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                                console.log('Error!')
-                                //reject
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting y1Status to open failed with ' + err);
                             }).then(function() {
                                 setstate('y1Status','close',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
                                         //resolve
                                 }, function(err) {
-                                   done(new Error("promise is not resolved"));
+                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    done('setting y1Status to close failed with ' + err);
                                 });
                             })
                         })
@@ -795,14 +820,16 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                               done(new Error("promise is not resolved"));
+                               console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting y2Status to open failed with ' + err);
                             }).then(function() {
                                 setstate('y2Status','close',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    done(new Error("promise is not resolved"));
+                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    done('setting y2Status to close failed with ' + err);
                                 });
                             })
                         })
@@ -829,14 +856,16 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                                done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting gStatus to open failed with ' + err);
                             }).then(function() {
                                 setstate('gStatus','close',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    done(new Error("promise is not resolved"));
+                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    done('setting gStatus to close failed with ' + err);
                                 });
                             })
                         })
@@ -859,7 +888,8 @@ getDevicesWithFacades().then(function(devices) {
                             getstate('keypadLockLevel',deviceId,facades).then(function(){
                                 done()
                             },function(err){
-                                done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('getting KeypadLockLevel failed with ' + err);
                             })
                         })
                     }
@@ -885,14 +915,16 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                               done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting temperatureDisplayMode to celsius failed with ' + err);
                             }).then(function() {
                                 setstate('temperatureDisplayMode','fahrenheit',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    done(new Error("promise is not resolved"));
+                                   console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting temperatureDisplayMode to fahrenheit failed with ' + err);
                                 });
                             })
                         })
@@ -919,14 +951,16 @@ getDevicesWithFacades().then(function(devices) {
                                 //done();
                                 //resolve area
                             }, function(err) {
-                               done(new Error("promise is not resolved"));
+                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting occupancyMode to occupieds failed with ' + err);
                             }).then(function() {
                                 setstate('occupancyMode','unoccupied',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
                                         //resolve
                                 }, function(err) {
-                                    done(new Error("promise is not resolved"));
+                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                done('setting occupancyMode to unoccupied failed with ' + err);
                                 });
                             })
                         })
