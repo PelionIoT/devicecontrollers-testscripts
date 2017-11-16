@@ -1,10 +1,9 @@
-
 /*
  * mocha test for on board devices
  *
  * WIGWAG Inc, bhoopesh <bhoopesh@izuma.net>
  *
- * This file for the test report 
+ * testScript 
  */
 "use strict"
 module.exports = function(stateproperty,deviceId,facades){

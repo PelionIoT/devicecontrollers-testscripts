@@ -1,9 +1,9 @@
 /*
- * mocha test for onboard devices
+ * mocha test for on board devices
  *
  * WIGWAG Inc, bhoopesh <bhoopesh@izuma.net>
  *
- * This file for the test report 
+ * testScript 
  */
 "use strict"
 var assert = require('assert')
