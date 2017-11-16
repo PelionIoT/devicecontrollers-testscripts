@@ -27,7 +27,7 @@ function isDeviceInterface(value) {
     return (value.indexOf('Facades') != -1);
 }
 
-console.log('------------------------' + process.argv.length +'----------------------')
+console.log('------------------------' + process.argv[3] +'----------------------')
 function getDevicesWithFacades() {
     var devices = {};
     return new Promise(function(resolve, reject) {
@@ -86,39 +86,34 @@ getDevicesWithFacades().then(function(devices) {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                    // console.log(`${facades}`.green)
                     this.timeout(60000)
-                        if(regis && reach === true){
-                            it(`${deviceId} test complete for facade ${facades}`,function(done){
+                    if(regis && reach === true){
+                        it(`${deviceId} test complete for facade ${facades}`,function(done){
                             console.log(`device ${deviceId} has facades- ${facades}`.blue)
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
                             setstate('power','on',deviceId,facades).then(function() {
                             }, function(err) {
-                                
-                                    console.log(`Error while setting power to off of ${deviceId}`.red)
-                                    done('setting power to on  failed with ' + err);
-                                
-                            }).then(function() {
+                                console.log(`Error while setting power to off of ${deviceId}`.red)
+                                done('setting power to on  failed with ' + err);
+                                }).then(function() {
                                 setstate('power','off', deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
                                     //resolve
                                 }, function(err) {
-                                
-                                        console.log(`Error while setting power to off of ${deviceId}`.red)
-                                        done('setting power to off failed with ' + err);
-                                   
+                                console.log(`Error while setting power to off of ${deviceId}`.red)
+                                done('setting power to off failed with ' + err);
                                 });
                             });
-                            })
-                        } 
-                        else{
-                            it(`${deviceId} test fail for facade ${facades}`,function(done){
-                                console.log(`Error while setting ${facades} of ${deviceId}`.red)
-                                done(new Error("either device is not registered or reachable or both"));
-                            })
-                        }   
+                         })
+                    } 
+                    else{
+                        it(`${deviceId} test fail for facade ${facades}`,function(done){
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
+                            done(new Error("either device is not registered or reachable or both"));
+                        })
+                    }   
                 })
-
             } 
             else if(facades == 'Facades/HasBattery'){
                 //console.log(regis)
@@ -128,10 +123,10 @@ getDevicesWithFacades().then(function(devices) {
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('battery',deviceId,facades).then(function(){
                             done()
-                        },function(err){
+                            },function(err){
                             console.log(`Error while getting battery of ${deviceId}`.red)
                             done('getting power of battery failed with ' + err);
-                        })
+                            })
                         })
                     }
                     else{
@@ -148,7 +143,7 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}}`,function(done){
                             getstate('pressed',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
                                 console.log(`Error while getting button status of ${deviceId}`.red)
                                 done('geting push button failed with ' + err);
@@ -157,7 +152,7 @@ getDevicesWithFacades().then(function(devices) {
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }   
@@ -169,8 +164,7 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('contact',deviceId,facades).then(function(){
-                                done()
-                                //console.log('----------------------------------------------------------------')
+                            done()
                             },function(err){
                                 console.log(`Error while getting contact sensors of ${deviceId}`.red)
                                 done('getting contact sensor failed with ' + err);
@@ -179,7 +173,7 @@ getDevicesWithFacades().then(function(devices) {
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }  
@@ -194,8 +188,6 @@ getDevicesWithFacades().then(function(devices) {
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
                             setstate('lock','lock',deviceId,facades).then(function() {
-                                //done();
-                                //resolve area
                             }, function(err) {
                                 console.log(`Error while setting Doorlock to lock of ${deviceId}`.red)
                                 done('setting Doorlock to lock failed with ' + err);
@@ -203,7 +195,6 @@ getDevicesWithFacades().then(function(devices) {
                                 setstate('lock','unlock',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
-                                        //resolve
                                 }, function(err) {
                                     console.log(`Error while setting Doorlock to unlock of ${deviceId}`.red)
                                     done('setting Doorlock to unlocked failed with ' + err);
@@ -213,9 +204,7 @@ getDevicesWithFacades().then(function(devices) {
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }   
@@ -231,18 +220,15 @@ getDevicesWithFacades().then(function(devices) {
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
                             setstate('flipflop','on',deviceId,facades).then(function() {
-                                //done();
-                                //resolve area
                             }, function(err) {
-                                 console.log(`Error while setting flipflop to on of ${deviceId}`.red)
+                                console.log(`Error while setting flipflop to on of ${deviceId}`.red)
                                 done('setting flipflop to on failed with ' + err);
                             }).then(function() {
                                 setstate('flipflop','off',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${Resources} successfully`.blue)
                                     done();
-                                        //resolve
                                 }, function(err) {
-                                     console.log(`Error while setting flipflop to off of ${deviceId}`.red)
+                                    console.log(`Error while setting flipflop to off of ${deviceId}`.red)
                                     done('setting flipflop to off failed with ' + err);
                                 });
                             });
@@ -250,9 +236,7 @@ getDevicesWithFacades().then(function(devices) {
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }       
@@ -264,18 +248,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('humidity',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                 console.log(`Error while getting humidity of ${deviceId}`.red)
+                                console.log(`Error while getting humidity of ${deviceId}`.red)
                                 done('getting humidity failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }   
@@ -287,18 +269,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('luminance',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting luminance of ${deviceId}`.red)
                                 done('getting luminance failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                           console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }  
@@ -310,19 +290,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('motion',deviceId,facades).then(function(){
-                                done()
-                                //console.log('-----------------------------------------------------------------')
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting motion status of ${deviceId}`.red)
                                 done('getting motion sensor failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                           console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }  
@@ -334,18 +311,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('regulator',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting regulator output of ${deviceId}`.red)
                                 done('getting regulator failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }  
@@ -357,18 +332,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('smoke',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting smokealarm status of ${deviceId}`.red)
                                 done('getting smoke alarm failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }  
@@ -380,18 +353,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('temperature',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting temperature from ${deviceId}`.red)
                                 done('getting temperature failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }  
@@ -406,43 +377,35 @@ getDevicesWithFacades().then(function(devices) {
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
                             setstate('thermostatMode', 'heat',deviceId,facades).then(function() {
-                                //done();
-                                //resolve area
                             }, function(err) {
-                               console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while setting thermostat to heat of ${deviceId}`.red)
                                 done('setting thermostat to heat failed with ' + err);
                             }).then(function() {
                                 setstate('thermostatMode', 'cool',deviceId,facades).then(function() {
-                                    
-                                    }, function(err) {
-                                        console.log(`problem in the ${facades} of ${deviceId}`)
-                                        done('setting thermostat to cool failed with ' + err);
+                                }, function(err) {
+                                    console.log(`Error while setting thermostat to cool of ${deviceId}`.red)
+                                    done('setting thermostat to cool failed with ' + err);
                                 }).then(function() {
                                     setstate('thermostatMode', 'auto',deviceId,facades).then(function() {
-                                        //done();
-                                            //resolve
                                     }, function(err) {
-                                        console.log(`problem in the ${facades} of ${deviceId}`)
+                                        cconsole.log(`Error while setting thermostat to auto of ${deviceId}`.red)
                                         done('setting thermostat to auto failed with ' + err);
-                                }).then(function() {
-                                    setstate('thermostatMode', 'off',deviceId,facades).then(function() {
-                                        console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
-                                        done();
-                                            //resolve
-                                    }, function(err) {
-                                       console.log(`problem in the ${facades} of ${deviceId}`)
-                                        done('setting thermostat to off failed with ' + err);
-                                    })
+                                    }).then(function() {
+                                        setstate('thermostatMode', 'off',deviceId,facades).then(function() {
+                                            console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
+                                            done();
+                                        }, function(err) {
+                                            cconsole.log(`Error while setting thermostat to off of ${deviceId}`.red)
+                                            done('setting thermostat to off failed with ' + err);
+                                        })
+                                    })      
                                 })      
-                            })      
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }  
@@ -454,18 +417,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('vibration',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting vibration status from ${deviceId}`.red)
                                 done('getting vibration failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     }  
@@ -477,18 +438,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(){
                             getstate('waterleak',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting waterleak status from ${deviceId}`.red)
                                 done('getting waterleak failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -500,18 +459,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('occupiedCoolTemperatureLevel',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting occupiedCoolTemperatureLevel status from ${deviceId}`.red)
                                 done('getting occupiedCoolTemperatureLevel failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -523,18 +480,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('occupiedHeatTemperatureLevel',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                 console.log(`Error while getting occupiedHeatTemperatureLevel status from ${deviceId}`.red)
                                 done('getting occupiedHeatTemperatureLevel failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -546,18 +501,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('occupiedAutoTemperatureLevel',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                 console.log(`Error while getting occupiedAutoTemperatureLevel status from ${deviceId}`.red)
                                 done('getting occupiedAutoTemperatureLevel failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -569,18 +522,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('unoccupiedCoolTemperatureLevel',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                               console.log(`problem in the ${facades} of ${deviceId}`)
+                                 console.log(`Error while getting unoccupiedCoolTemperatureLevel status from ${deviceId}`.red)
                                 done('getting UnoccupiedCoolTemperatureLevel failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -592,18 +543,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('unoccupiedHeatTemperatureLevel',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                 console.log(`Error while getting unoccupiedHeatTemperatureLevel status from ${deviceId}`.red)
                                 done('getting UnoccupiedHeatTemperatureLevel failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -615,18 +564,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('unoccupiedAutoTemperatureLevel',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                               console.log(`problem in the ${facades} of ${deviceId}`)
+                                 console.log(`Error while getting unoccupiedAutoTemperatureLevel status from ${deviceId}`.red)
                                 done('getting UnoccupiedAutoTemperatureLevel failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -638,18 +585,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('returnTemperature',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                              console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting ThermostatReturnTemperature status from ${deviceId}`.red)
                                 done('getting return temperature failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -661,18 +606,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('supplyTemperature',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting ThermostatSupplyTemperature status from ${deviceId}`.red)
                                 done('getting supply temperature failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -684,18 +627,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('deadband',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting ThermostatDeadband status from ${deviceId}`.red)
                                 done('getting deadband failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -710,18 +651,15 @@ getDevicesWithFacades().then(function(devices) {
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
                             setstate('w1Status','open',deviceId,facades).then(function() {
-                                //done();
-                                //resolve area
                             }, function(err) {
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while setting ThermostatW1Status to open for ${deviceId}`.red)
                                 done('setting w1Status to open failed with ' + err);
                             }).then(function() {
                                 setstate('w1Status','close',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
-                                        //resolve
                                 }, function(err) {
-                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    console.log(`Error while setting ThermostatW1Status to close for ${deviceId}`.red)
                                     done('setting w1Status to close failed with ' + err);
                                 });
                             })
@@ -729,9 +667,7 @@ getDevicesWithFacades().then(function(devices) {
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -746,18 +682,15 @@ getDevicesWithFacades().then(function(devices) {
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
                             setstate('w2Status','open',deviceId,facades).then(function() {
-                                //done();
-                                //resolve area
                             }, function(err) {
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while setting ThermostatW2Status to open for ${deviceId}`.red)
                                 done('setting w2Status to open failed with ' + err);
                             }).then(function() {
                                 setstate('w2Status','close',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
-                                        //resolve
                                 }, function(err) {
-                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    console.log(`Error while setting ThermostatW2Status to close for ${deviceId}`.red)
                                     done('setting w2Status to close failed with ' + err);
                                 });
                             })
@@ -765,9 +698,7 @@ getDevicesWithFacades().then(function(devices) {
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -782,18 +713,15 @@ getDevicesWithFacades().then(function(devices) {
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
                             setstate('y1Status','open',deviceId,facades).then(function() {
-                                //done();
-                                //resolve area
                             }, function(err) {
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while setting ThermostatY1Status to open for ${deviceId}`.red)
                                 done('setting y1Status to open failed with ' + err);
                             }).then(function() {
                                 setstate('y1Status','close',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
-                                        //resolve
                                 }, function(err) {
-                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    console.log(`Error while setting ThermostatY1Status to close for ${deviceId}`.red)
                                     done('setting y1Status to close failed with ' + err);
                                 });
                             })
@@ -801,9 +729,7 @@ getDevicesWithFacades().then(function(devices) {
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -818,18 +744,15 @@ getDevicesWithFacades().then(function(devices) {
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
                             setstate('y2Status','open',deviceId,facades).then(function() {
-                                //done();
-                                //resolve area
                             }, function(err) {
-                               console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while setting ThermostatY2Status to open for ${deviceId}`.red)
                                 done('setting y2Status to open failed with ' + err);
                             }).then(function() {
                                 setstate('y2Status','close',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
-                                        //resolve
                                 }, function(err) {
-                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    console.log(`Error while setting ThermostatY2Status to close for ${deviceId}`.red)
                                     done('setting y2Status to close failed with ' + err);
                                 });
                             })
@@ -837,9 +760,7 @@ getDevicesWithFacades().then(function(devices) {
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -854,18 +775,15 @@ getDevicesWithFacades().then(function(devices) {
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
                             setstate('gStatus','open',deviceId,facades).then(function() {
-                                //done();
-                                //resolve area
                             }, function(err) {
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while setting ThermostatGStatus to open for ${deviceId}`.red)
                                 done('setting gStatus to open failed with ' + err);
                             }).then(function() {
                                 setstate('gStatus','close',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
-                                        //resolve
                                 }, function(err) {
-                                    console.log(`problem in the ${facades} of ${deviceId}`)
+                                    console.log(`Error while setting ThermostatGStatus to close for ${deviceId}`.red)
                                     done('setting gStatus to close failed with ' + err);
                                 });
                             })
@@ -873,9 +791,7 @@ getDevicesWithFacades().then(function(devices) {
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -887,18 +803,16 @@ getDevicesWithFacades().then(function(devices) {
                     if(regis && reach === true){
                         it(`${deviceId} test complete for facade ${facades}`,function(done){
                             getstate('keypadLockLevel',deviceId,facades).then(function(){
-                                done()
+                            done()
                             },function(err){
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while getting keypadLockLevel of ${deviceId}`.red)
                                 done('getting KeypadLockLevel failed with ' + err);
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -913,28 +827,23 @@ getDevicesWithFacades().then(function(devices) {
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
                             setstate('temperatureDisplayMode','celsius',deviceId,facades).then(function() {
-                                //done();
-                                //resolve area
                             }, function(err) {
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while setting temperatureDisplayMode to celsius for ${deviceId}`.red)
                                 done('setting temperatureDisplayMode to celsius failed with ' + err);
                             }).then(function() {
                                 setstate('temperatureDisplayMode','fahrenheit',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
-                                        //resolve
                                 }, function(err) {
-                                   console.log(`problem in the ${facades} of ${deviceId}`)
-                                done('setting temperatureDisplayMode to fahrenheit failed with ' + err);
+                                    console.log(`Error while setting temperatureDisplayMode to fahrenheit for ${deviceId}`.red)
+                                    done('setting temperatureDisplayMode to fahrenheit failed with ' + err);
                                 });
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
@@ -949,28 +858,23 @@ getDevicesWithFacades().then(function(devices) {
                             console.log('\tdevice:'.green,deviceId ,'\n',
                                 '\ttesting facades:'.green,facades)
                             setstate('occupancyMode','occupied',deviceId,facades).then(function() {
-                                //done();
-                                //resolve area
                             }, function(err) {
-                                console.log(`problem in the ${facades} of ${deviceId}`)
+                                console.log(`Error while setting OccupancyMode to occupied for ${deviceId}`.red)
                                 done('setting occupancyMode to occupieds failed with ' + err);
                             }).then(function() {
                                 setstate('occupancyMode','unoccupied',deviceId,facades).then(function() {
                                     console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                     done();
-                                        //resolve
                                 }, function(err) {
-                                    console.log(`problem in the ${facades} of ${deviceId}`)
-                                done('setting occupancyMode to unoccupied failed with ' + err);
+                                    console.log(`Error while setting OccupancyMode to unoccupied for ${deviceId}`.red)
+                                    done('setting occupancyMode to unoccupied failed with ' + err);
                                 });
                             })
                         })
                     }
                     else{
                         it(`${deviceId} test fail for facade ${facades}`,function(done){
-                            console.log(`problem in the ${deviceId}`)
-                            //this.skip()
-                            //expect(regis && reach).to.deep.equal(true);
+                            console.log(`Error while setting ${facades} of ${deviceId}`.red)
                             done(new Error("either device is not registered or reachable or both"));
                         })
                     } 
