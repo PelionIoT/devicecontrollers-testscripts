@@ -27,7 +27,10 @@ function isDeviceInterface(value) {
     return (value.indexOf('Facades') != -1);
 }
 
-console.log('------------------------' + process.argv[3] +'----------------------')
+//console.log('------------------------' + process.argv +'----------------------')
+//if(process.argv[3] == "bhoopesh"){
+  //  console.log("bhoopesh is working fine")
+//}
 function getDevicesWithFacades() {
     var devices = {};
     return new Promise(function(resolve, reject) {
@@ -38,6 +41,18 @@ function getDevicesWithFacades() {
                 Resources = resources = rsrc;
                 // console.log('Got resources ' + JSON.stringify(resources));
                 Object.keys(resources).forEach(function(deviceId) {
+                    //if(process.argv[3] == undefined){
+                       // console.log("bhoopesh working cool")
+                    //}
+                    switch(process.argv[3]){
+                        case undefined : 
+                            console.log("undefined case verififed");
+                            break;
+                        default :
+                            deviceId = process.argv[3];
+                            //console.log(deviceId);
+                            break;
+                    }
                     if (typeof resourceTypes[resources[deviceId].type] !== 'undefined') {
                         // devices[deviceId] = resourceTypes[resources[deviceId].type]['0.0.1'].interfaces;
                         var deviceInterfaces = [];
