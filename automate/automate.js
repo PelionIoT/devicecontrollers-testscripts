@@ -14,7 +14,7 @@ let list_Resources = dev$.select('id=*').listResources()
 var setstate = require('./stateproperty.js')
 var getstate = require('./get_device.js')
 
-var program = require('commander');
+
 
 var resourceTypes;
 var resources;
@@ -22,13 +22,6 @@ var Resources;
 
 var reachable = [];
 var registered  = [];
-
-program
-  .version('0.1.0')
-  .option('-r, --resourcesId [type]',)
-  .option('-f, --facades [type]')
-  .parse(process.argv);
-
 
 function isDeviceInterface(value) {
     return (value.indexOf('Facades') != -1);
@@ -51,9 +44,15 @@ function getDevicesWithFacades() {
                     //if(process.argv[3] == undefined){
                        // console.log("bhoopesh working cool")
                     //}
-                    //if(program.resourcesId){
-                      //  deviceId = program.resourcesId
-                  //  }
+                    switch(process.argv[3]){
+                        case undefined : 
+                            console.log("undefined case verififed");
+                            break;
+                        default :
+                            deviceId = process.argv[3];
+                            //console.log(deviceId);
+                            break;
+                    }
                     if (typeof resourceTypes[resources[deviceId].type] !== 'undefined') {
                         // devices[deviceId] = resourceTypes[resources[deviceId].type]['0.0.1'].interfaces;
                         var deviceInterfaces = [];
