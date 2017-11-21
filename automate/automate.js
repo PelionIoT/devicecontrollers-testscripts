@@ -51,9 +51,9 @@ function getDevicesWithFacades() {
                     //if(process.argv[3] == undefined){
                        // console.log("bhoopesh working cool")
                     //}
-                    if(program.resourcesId){
-                        deviceId = program.resourcesId
-                    }
+                    //if(program.resourcesId){
+                      //  deviceId = program.resourcesId
+                  //  }
                     if (typeof resourceTypes[resources[deviceId].type] !== 'undefined') {
                         // devices[deviceId] = resourceTypes[resources[deviceId].type]['0.0.1'].interfaces;
                         var deviceInterfaces = [];
