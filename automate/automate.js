@@ -94,12 +94,18 @@ getDevicesWithFacades().then(function(devices) {
     done()
     Object.keys(devices).forEach(function(deviceId) {
         devices[deviceId].forEach(function(facades) {
+            //console.log(typeof program.facades)
             var regis = (registered.indexOf(deviceId) > -1);
             var reach = (reachable.indexOf(deviceId) > -1);  
                 if(facades === program.facades){
-                   facades = program.facades
-                }else{
+                   //facades = program.facades
+                }
+                else if(program.facades === undefined){
+                    //console.log('hgvdbhjwnkm')
+                }
+                else{
                     return;
+                    //console.log(facades)
                 }
             
             console.log(facades)
