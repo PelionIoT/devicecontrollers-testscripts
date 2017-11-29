@@ -25,7 +25,7 @@ var registered  = [];
 
 program
   .option('-r, --resourceId [type]', 'specified device for test')
-  .option('-P, --facades [type]', 'specified facade for specified device')
+  .option('-f, --facades [type]', 'specified facade for specified device')
   .parse(process.argv);
 
 function isDeviceInterface(value) {
@@ -95,8 +95,14 @@ getDevicesWithFacades().then(function(devices) {
     Object.keys(devices).forEach(function(deviceId) {
         devices[deviceId].forEach(function(facades) {
             var regis = (registered.indexOf(deviceId) > -1);
-            var reach = (reachable.indexOf(deviceId) > -1);
-            //console.log(facades)
+            var reach = (reachable.indexOf(deviceId) > -1);  
+                if(facades === program.facades){
+                   facades = program.facades
+                }else{
+                    return;
+                }
+            
+            console.log(facades)
             if (facades == 'Facades/Switchable') {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                    // console.log(`${facades}`.green)
