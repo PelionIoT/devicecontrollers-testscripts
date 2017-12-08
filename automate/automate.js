@@ -108,7 +108,7 @@ getDevicesWithFacades().then(function(devices) {
                     //console.log(facades)
                 }
             
-            console.log(facades)
+            //console.log(facades)
             if (facades == 'Facades/Switchable') {
                 describe(`#testing ${deviceId}...`.yellow,function(){
                    // console.log(`${facades}`.green)
