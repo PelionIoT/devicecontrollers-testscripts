@@ -415,14 +415,14 @@ getDevicesWithFacades().then(function(devices) {
                                 }).then(function() {
                                     setstate('thermostatMode', 'auto',deviceId,facades).then(function() {
                                     }, function(err) {
-                                        cconsole.log(`Error while setting thermostat to auto of ${deviceId}`.red)
+                                        console.log(`Error while setting thermostat to auto of ${deviceId}`.red)
                                         done('setting thermostat to auto failed with ' + err);
                                     }).then(function() {
                                         setstate('thermostatMode', 'off',deviceId,facades).then(function() {
                                             console.log('Tested Facade:'.green,`${facades} for the device ${deviceId} successfully`.blue)
                                             done();
                                         }, function(err) {
-                                            cconsole.log(`Error while setting thermostat to off of ${deviceId}`.red)
+                                            console.log(`Error while setting thermostat to off of ${deviceId}`.red)
                                             done('setting thermostat to off failed with ' + err);
                                         })
                                     })      
